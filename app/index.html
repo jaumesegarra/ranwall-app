@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html ng-app="app">
+
+<head>
+    <title>
+        ranwall
+    </title>
+    <link rel="stylesheet" type="text/css" href="css/app.css">
+    
+</head>
+
+<body ng-controller="mainController">
+    <div ng-include src="'partials/header.html'"></div>
+
+    <div id="random-wallpaper-active">
+        <img/>
+        <div class="foot-buttons">
+            <button class="light" id="set-wallpaper" ng-click="setBtnClick()">set</button>
+        </div>
+    </div>
+
+    <script src="js/_vendor/angular/angular.js"></script>
+    <script src="js/_vendor/angular-random-string/angular-random-string.js"></script>
+    <script src="js/_vendor/angular-local-storage/angular-local-storage.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/wall.js"></script>
+</body>
+
+</html>
