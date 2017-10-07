@@ -12,7 +12,7 @@ angular.module('app')
           var obj = {
             refresh_preview: function(){
                 var wall_preview = angular.element(document.querySelector("#random-wallpaper-active > img"));
-                wall_preview.attr('src', '../'+_WALLPAPERS_FOLDER + '/' +_WALLPAPER_NAME+'.jpeg');
+                wall_preview.attr('src', 'file:///'+_WALLPAPERS_FOLDER + '/' +_WALLPAPER_NAME+'.jpeg');
             },
             _purgeWallpapersFolder: function(){
                 try { 

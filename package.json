@@ -9,17 +9,19 @@
         "start": "nw . "
     },
     "dependencies": {
+        "load-grunt-tasks": "^3.5.2",
         "mkdirp": "^0.5.1",
-        "nw": "0.20.1-sdk",
+        "nw": "^0.20.1-sdk",
+        "pify": "^3.0.0",
         "wallpaper": "^2.5.0"
     },
     "devDependencies": {
         "grunt": "^0.4.5",
-        "grunt-nw-builder": "^2.0.0",
-        "grunt-contrib-watch": "^1.0.0",
+        "grunt-bower": "^0.21.4",
         "grunt-contrib-sass": "^1.0.0",
-        "grunt-shell": "^1.1.2",
-        "grunt-bower": "^0.21.4"
+        "grunt-contrib-watch": "^1.0.0",
+        "grunt-nw-builder": "^3.1.0",
+        "grunt-shell": "^1.1.2"
     },
     "window": {
         "title": "RanWall",
@@ -33,6 +35,7 @@
         "min_width": 400,
         "min_height": 300,
         "max_width": 900,
-        "max_height": 570
+        "max_height": 570,
+        "icon": "./app/img/logo.png"
     }
 }

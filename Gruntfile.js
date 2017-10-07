@@ -1,3 +1,5 @@
+require('load-grunt-tasks'); // npm install --save-dev load-grunt-tasks
+
 module.exports = function (grunt) {
     //Collect all of our node modules
     var modules = []
@@ -67,7 +69,7 @@ module.exports = function (grunt) {
                 cacheDir: './build/cache',
                 macIcns: './app-icon.icns',
                 winIco: './app-icon.ico',
-                version: '0.20.1',
+                version: '0.25.1',
                 flavor: 'normal',
                 buildDir: './builds', // Where the build version your app is saved
             },

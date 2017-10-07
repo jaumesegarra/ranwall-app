@@ -4,3 +4,5 @@ build/**
 builds/**
 bower_components/**
 package-lock.json
+.sass-cache/**
+w/**

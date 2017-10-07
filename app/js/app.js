@@ -3,14 +3,13 @@
 angular.module('app', ['angularRandomString', 'LocalStorageModule'])
 	.constant('URL_RANDOM_WALLPAPERS','http://unsplash.it/1920/1080/?random')
 	.constant('PLATFORM', process.platform)
-	.constant('WALLPAPERS_FOLDER', 'w')
+	.constant('WALLPAPERS_FOLDER', (process.env[(process.platform == 'win32') ? 'USERPROFILE' : 'HOME'])+"/Library/ranwall")
     .constant('WALLPAPER_NAME', '')
     .constant('NW', (function(){
 	    var requires = {
 		    gui: require('nw.gui'),
 		    wallpaper: require('wallpaper'),
 		    fs: require('fs'),
-			wget: require('wget'),
             mkdirp: require('mkdirp'),
             http: require('http')
 	    };
@@ -20,7 +19,6 @@ angular.module('app', ['angularRandomString', 'LocalStorageModule'])
 		    win: requires.gui.Window.get(),
 		    wallpaper: requires.wallpaper,
 		    fs: requires.fs,
-		    wget: requires.wget,
             mkdirp: requires.mkdirp,
             http: requires.http
 	    }
@@ -35,7 +33,7 @@ angular.module('app', ['angularRandomString', 'LocalStorageModule'])
             NW.gui.Window.get().menu = menu;
         }
 	}])
-	.controller('mainController',['$scope', 'wall', 'WALLPAPER_NAME', 'randomString', 'localStorageService', function($scope, $wall, _WALLPAPER_NAME, $randomString, $localStorageService) {
+	.controller('mainController',['$scope', 'wall', 'localStorageService', function($scope, $wall, $localStorageService) {
 		$wall.new();
 
 		$scope.refreshBtnClick = $wall.new;
