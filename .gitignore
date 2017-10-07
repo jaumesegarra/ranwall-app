@@ -5,4 +5,5 @@ builds/**
 bower_components/**
 package-lock.json
 .sass-cache/**
-w/**
+app/js/_vendor/**
+app/css/**
