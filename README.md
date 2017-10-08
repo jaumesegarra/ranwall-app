@@ -6,5 +6,4 @@ With Ranwall you can discover new wallpapers just doing a click, if you like it 
 ![Screenshoot](screenshoot.png)
 
 ## Coming
-- [ ] Wallpaper resolution depending on the computer or user configuration
-- [ ] Option for remove cache
+- [ ] Solve icon resolution on Windows

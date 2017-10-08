@@ -17,12 +17,13 @@ header{
 
 	button {
 		float: right;
+        margin-left: 10px;
 		margin-top: 12px
 	}
 }
 
 
-button, .button {
+button, .button, input[type="button"] {
     border: 0px;
     border-radius: 20px;
     background-color: #007aff;
@@ -39,9 +40,17 @@ button, .button {
 	    opacity: 0.9;
 	}
 
+    &.grey {
+        background-color: #a0a0a0;
+    }
+
 	&[disabled]{
 		cursor: default;
 	}
+
+    &:hover{
+        opacity: 0.95;
+    }
 }
 
 $border_radius_wall: 10px;
@@ -81,7 +90,7 @@ $border_radius_wall: 10px;
 	    margin-right: 2%;
 
 	    button {
-		    border: 1px dotted #006adc;
+		    border: 1px dotted #4e88c5;
 		}
 	}
 }
@@ -93,5 +102,71 @@ $border_radius_wall: 10px;
     }
     to {
         opacity:0.8;
+    }
+}
+
+input[type="text"], input[type="email"], input[type="password"], input[type="number"], textarea{
+    padding: 4px 10px;
+    border-radius: 20px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+
+    &:focus{
+        outline:none;
+        border-color: #bbb 
+    }
+}
+
+
+input[type="number"]{
+    padding-right: 0px;
+}
+
+body.config{
+    background: #f2f2f2;
+    color: #000;
+    font-family: Helvetica;
+    overflow: auto;
+
+    .content {
+        display: table;
+
+        h2{
+            text-align: right;
+            font-size: 15px;
+            padding: 5px 17px;
+        }
+
+        .config-option {
+            min-width: 200px;
+            margin-bottom: 15px;
+            margin-top: 7px;
+
+            span.x {
+                font-size: 12px;
+                font-weight: bold;
+                margin: 0 3px;
+            }
+
+            span.info {
+                position: relative;
+                top: 7px;
+                font-size: 10px;
+                color: #444;
+                display:block
+            }
+
+            label{
+                font-size: 14px;
+                &.block{
+                    display: block;
+                    margin-bottom: 6px;
+                }
+            }
+
+            #resolution_x, #resolution_y{
+                width: 50px;
+            }
+        }
     }
 }

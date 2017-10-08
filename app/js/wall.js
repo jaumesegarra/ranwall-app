@@ -8,7 +8,7 @@
  * Factory in the app
  */
 angular.module('app')
-  .factory('wall', ['URL_RANDOM_WALLPAPERS', 'WALLPAPER_NAME', 'WALLPAPERS_FOLDER', 'NW', 'localStorageService', 'randomString', function(_URL_RANDOM_WALLPAPERS,  _WALLPAPER_NAME, _WALLPAPERS_FOLDER, NW, $localStorageService, $randomString) {
+  .factory('wall', ['URL_RANDOM_WALLPAPERS', 'USER_RESOLUTION', 'WALLPAPER_NAME', 'WALLPAPERS_FOLDER', 'NW', 'localStorageService', 'randomString', function(_URL_RANDOM_WALLPAPERS, _USER_RESOLUTION,  _WALLPAPER_NAME, _WALLPAPERS_FOLDER, NW, $localStorageService, $randomString) {
           var obj = {
             refresh_preview: function(){
                 var wall_preview = angular.element(document.querySelector("#random-wallpaper-active > img"));
@@ -54,11 +54,13 @@ angular.module('app')
               if(obj._checkAppFolder()){
                   var file = NW.fs.createWriteStream(output);
 
-                  var request = NW.http.get(_URL_RANDOM_WALLPAPERS, function(response) {
+                  var resolution = ($localStorageService.get('user_resolution') == undefined) ? _USER_RESOLUTION : JSON.parse("["+$localStorageService.get('user_resolution')+"]");
+                  var url = _URL_RANDOM_WALLPAPERS.replace("{x}",resolution[0]).replace("{y}",resolution[1]);
+
+                  var request = NW.http.get(url, function(response) {
                       response.pipe(file);
 
                       response.on('end', function(){
-                          $localStorageService.set('ran_set', true);
                           
                           var refresh_button = angular.element(document.querySelector("#refresh-random-wallpaper"));
                               refresh_button.removeAttr("disabled");

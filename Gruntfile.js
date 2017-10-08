@@ -38,6 +38,16 @@ module.exports = function (grunt) {
                     'dist/js/bootstrap.min.js',
                     'themes/base/minified/**'
                   ]
+                },
+                'font-awesome': {
+                  expand: false,
+                  css_dest: 'app/css/',
+                  keepExpandedHierarchy: false,
+                  stripGlobBase: true,
+                  files: [
+                    'css/font-awesome.min.css',
+                    'fonts/*'
+                  ]
                 }
               }
             }
