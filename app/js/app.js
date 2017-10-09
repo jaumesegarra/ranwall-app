@@ -11,7 +11,7 @@ angular.module('app', ['angularRandomString', 'LocalStorageModule'])
 	'name': 'unsplash.com',
 	'url': 'https://source.unsplash.com/random/{x}x{y}'
 }])
-.constant('PLATFORM', process.platform)
+.constant('PLATFORM', (process.platform == "darwin") ? 'mac' : ((process.platform == "win32" && process.arch == "x64") ? 'win64' : 'win32'))
 .constant('WALLPAPERS_FOLDER', (process.env[(process.platform == 'win32') ? 'USERPROFILE' : 'HOME'])+"/.ranwall")
 .value('WALLPAPER_NAME', '')
 .value('isConfigWindowOpen', false)
@@ -37,13 +37,16 @@ angular.module('app', ['angularRandomString', 'LocalStorageModule'])
 
 	localStorageServiceProvider.setNotify(true, true);
 
-	if (_PLATFORM == "darwin") {
+	if (_PLATFORM == "mac") {
 		var menu = new NW.gui.Menu({type: "menubar"});
 		menu.createMacBuiltin && menu.createMacBuiltin("ranwall");
 		NW.gui.Window.get().menu = menu;
 	}
+
 }])
-.controller('mainController',['$scope', 'wall', 'localStorageService', 'NW', 'isConfigWindowOpen', 'PLATFORM', function($scope, $wall, $localStorageService, NW, _isConfigWindowOpen, PLATFORM) {
+.controller('mainController',['$scope', 'wall', 'localStorageService', 'NW', 'isConfigWindowOpen', 'PLATFORM', 'updater', function($scope, $wall, $localStorageService, NW, _isConfigWindowOpen, PLATFORM, $updater) {
+	$updater.checkUpdate();
+
 	NW.win.on('close', function() {
 		NW.gui.App.quit();
 	});
@@ -67,7 +70,7 @@ angular.module('app', ['angularRandomString', 'LocalStorageModule'])
 				win.on('closed', function() {
 					_isConfigWindowOpen = false;
 
-					if (PLATFORM == "darwin") {
+					if (PLATFORM == "mac") {
 						var menu = new NW.gui.Menu({type: "menubar"});
 						menu.createMacBuiltin && menu.createMacBuiltin("on my wall");
 						NW.gui.Window.get().menu = menu;
@@ -120,4 +123,28 @@ angular.module('app', ['angularRandomString', 'LocalStorageModule'])
 		$wall._purgeWallpapersFolder();
 		$localStorageService.clearAll();
 	}
+}]).controller('updateController',['$scope','localStorageService', 'updater', 'NW', 'PLATFORM', function($scope, $localStorageService, $updater, NW, _PLATFORM){
+	var manifest = JSON.parse(localStorage.getItem("ls.nv_manifest"));
+	$scope.version = manifest.version;
+	$scope.changes = $localStorageService.get("nv_changes");
+
+	$scope.download = function () {
+		var url = manifest.download_url[_PLATFORM];
+		NW.gui.Shell.openExternal(url);
+	}
+
+	$scope.skip_version = false;
+	var before_update;
+
+	$scope.$watch('skip_version', function() {
+		if($scope.skip_version){
+			before_update = ($localStorageService.get("skip_version") != undefined && $localStorageService.get("skip_version") != $scope.version) ? $localStorageService.get("skip_version") : undefined;
+			$localStorageService.set("skip_version", $scope.version);
+		}else{
+			if(before_update)
+				$localStorageService.set("skip_version", before_update);
+			else
+				$localStorageService.remove("skip_version");
+		}
+	}, true);
 }]);

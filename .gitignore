@@ -10,3 +10,4 @@ app/css/**
 app/fonts/fontawesome**
 logo256.png
 .gitignore
+dist/**/*

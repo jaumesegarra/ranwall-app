@@ -1,6 +1,2 @@
-##Changes in v. 0.3
-- New icon
-- New wallpaper provider (unsplash.com)
-- Option to change Wallpaper provider
-- Minor UI Changes
-- Now wallpapers are downloaded in https
+##Changes in v. 0.3.1
+- Update manager (If has a new version available, ranwall tell you it).

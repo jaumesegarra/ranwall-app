@@ -1,0 +1,22 @@
+<!DOCTYPE HTML>
+<html ng-app="app">
+<head>
+	<meta charset="UTF-8"/>
+	<title>New update available!</title>
+	<link href="css/app.css" rel="stylesheet"/>
+</head>
+<body class="updater" ng-controller="updateController">
+	<h2>New v. {{version}}</h2>
+	<textarea readonly="readonly">{{changes}}</textarea>
+	<div class="foot">
+		<button ng-click="download()" id="download">Download</button>
+		<input type="checkbox" id="skip_version" ng-model="skip_version"/>
+		<label for="skip_version">Skip this version</label>
+	</div>
+	<script src="js/_vendor/angular/angular.js"></script>
+	<script src="js/_vendor/angular-random-string/angular-random-string.js"></script>
+	<script src="js/_vendor/angular-local-storage/angular-local-storage.js"></script>
+	<script type="text/javascript" src="js/app.js"></script>
+	<script type="text/javascript" src="js/updater.js"></script>
+</body>
+</html>

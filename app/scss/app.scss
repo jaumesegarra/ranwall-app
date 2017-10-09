@@ -152,12 +152,14 @@ input[type="number"]{
     padding-right: 0px;
 }
 
-body.config{
+body.config, body.updater{
     background: #f2f2f2;
     color: #000;
     font-family: Helvetica;
     overflow: auto;
+}
 
+body.config{
     .content {
         display: table;
 
@@ -197,6 +199,38 @@ body.config{
             #resolution_x, #resolution_y{
                 width: 50px;
             }
+        }
+    }
+}
+
+body.updater{
+    h2{
+        margin: 10px 0 15px;
+    }
+
+    textarea{
+        resize: none;
+        width: calc(100% - 20px);
+        height: auto;
+        min-height: 140px;
+        overflow: auto;
+
+        &::selection{
+            background:#d8edf1;
+        }
+    }
+
+    .foot {
+        margin-top: 10px;
+
+        #download {
+            float: right;
+            margin-top: 0px;
+        }
+
+        label {
+            position: relative;
+            top: 2px;
         }
     }
 }
