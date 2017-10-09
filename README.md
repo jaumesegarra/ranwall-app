@@ -6,4 +6,10 @@ With Ranwall you can discover new wallpapers just doing a click, if you like it 
 ![Screenshoot](screenshoot.png)
 
 ## Coming
-- [ ] Solve icon resolution on Windows
+- [ ] Option to launch at startup
+- [ ] Tray icon
+- [ ] Change wallpaper automatically every x seconds
+
+## Thanks to:
+* [unsplash.it](https://unsplash.it)
+* [unsplash.com](https://unsplash.com)

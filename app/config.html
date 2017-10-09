@@ -1,41 +1,49 @@
 <!DOCTYPE HTML>
 <html ng-app="app">
-	<head>
-		<meta charset="UTF-8"/>
-		<title>Configuration:: ranwall</title>
-		<link href="css/app.css" rel="stylesheet"/>
-	</head>
-	<body class="config" ng-controller="configController">
-		
-		<table border="0" class="content">
-			<tr>
-				<td><h2>Wallpaper:</h2></td>
-				<td>
-					<div class="config-option">
-						<label for="resolution_x" class="block">Resolution:</label>
-						<input type="number" id="resolution_x" ng-model="res_x"/><span class="x">x</span><input type="number" id="resolution_y" ng-model="res_y"/>
-						<button class="grey" ng-click="resolution_input('default')" title="Default">DF</button>
-						<button class="grey" ng-click="resolution_input('hd')" title="HD">HD</button>
-						<button class="grey" ng-click="resolution_input('4k')" title="4K">4K</button>
-						<span class="info">+ resolution, + loading time</span>
-					</div>
-				</td>
-			</tr>
-			<tr>
-				<td><h2>Advanced options:</h2></td>
-				<td>
-					<div class="config-option">
-						<button style="display: block" ng-click="deleteCache()">Delete cache</button>
-						<span class="info">If you have set a ranwallpaper, it may not be established when restart the computer.</span>
-					</div>
-				</td>
-			</tr>
-		</table>
+<head>
+	<meta charset="UTF-8"/>
+	<title>Configuration:: ranwall</title>
+	<link href="css/app.css" rel="stylesheet"/>
+</head>
+<body class="config" ng-controller="configController">
 
-		<script src="js/_vendor/angular/angular.js"></script>
-		<script src="js/_vendor/angular-random-string/angular-random-string.js"></script>
-		<script src="js/_vendor/angular-local-storage/angular-local-storage.js"></script>
-		<script type="text/javascript" src="js/app.js"></script>
-		<script type="text/javascript" src="js/wall.js"></script>
-	</body>
+	<table border="0" class="content">
+		<tr>
+			<td><h2>Wallpaper:</h2></td>
+			<td>
+				<div class="config-option">
+					<label for="wall_provider" class="block">Provider:</label>
+					<div class="select-wrapper">
+						<select ng-model="wall_provider" id="wall_provider" ng-options="wprovider.name for wprovider in wproviders">
+						</select>
+					</div>
+				</div>
+
+				<div class="config-option">
+					<label for="resolution_x" class="block">Resolution:</label>
+					<input type="number" id="resolution_x" ng-model="res_x"/><span class="x">x</span><input type="number" id="resolution_y" ng-model="res_y"/>
+					<button class="grey" ng-click="resolution_input('default')" title="Default">DF</button>
+					<button class="grey" ng-click="resolution_input('hd')" title="HD">HD</button>
+					<button class="grey" ng-click="resolution_input('4k')" title="4K">4K</button>
+					<span class="info">+ resolution, + loading time</span>
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td><h2>Advanced options:</h2></td>
+			<td>
+				<div class="config-option">
+					<button style="display: block" ng-click="deleteCache()">Delete cache</button>
+					<span class="info">If you have set a ranwallpaper, it may not be established when restart the computer.</span>
+				</div>
+			</td>
+		</tr>
+	</table>
+
+	<script src="js/_vendor/angular/angular.js"></script>
+	<script src="js/_vendor/angular-random-string/angular-random-string.js"></script>
+	<script src="js/_vendor/angular-local-storage/angular-local-storage.js"></script>
+	<script type="text/javascript" src="js/app.js"></script>
+	<script type="text/javascript" src="js/wall.js"></script>
+</body>
 </html>

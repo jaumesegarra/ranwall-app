@@ -1,25 +1,36 @@
+@import 'fonts';
+
 body {
-	background-color: #30383c;
-	font-family: Helvetica;
-	color: #fff;
-	padding: 20px 25px 10px 25px;
-	max-width: 800px;
+    background-color: #30383c;
+    font-family: Helvetica;
+    color: #fff;
+    padding: 20px 25px 10px 25px;
+    max-width: 800px;
     margin: 0 auto;
+}
+
+::selection{
+    background:transparent;
 }
 
 header{
 
-	h1 {
-		margin: 0px 0px 20px 0px;
-    	text-transform: capitalize;
-    	display: inline-block;
-	}
+    h1 {
+        margin: 0px 0px 20px 0px;
+        text-transform: capitalize;
+        display: inline-block;
+        font-family: 'Comfortaa', cursive;
+        font-weight: bold;
+        cursor: default;
+        position: relative;
+        top: 2px;
+    }
 
-	button {
-		float: right;
+    button {
+        float: right;
         margin-left: 10px;
-		margin-top: 12px
-	}
+        margin-top: 12px
+    }
 }
 
 
@@ -35,18 +46,18 @@ button, .button, input[type="button"] {
     font-weight: bold;
     text-transform: uppercase;
 
-	&.light {
-	    background-color: rgb(110, 169, 232);
-	    opacity: 0.9;
-	}
+    &.light {
+        background-color: rgb(110, 169, 232);
+        opacity: 0.9;
+    }
 
     &.grey {
         background-color: #a0a0a0;
     }
 
-	&[disabled]{
-		cursor: default;
-	}
+    &[disabled]{
+        cursor: default;
+    }
 
     &:hover{
         opacity: 0.95;
@@ -56,7 +67,7 @@ button, .button, input[type="button"] {
 $border_radius_wall: 10px;
 
 #random-wallpaper-active{
-	width: 100%;
+    width: 100%;
     max-width: 800px;
     height: auto;
     display: block;
@@ -66,33 +77,33 @@ $border_radius_wall: 10px;
     border-radius: $border_radius_wall;
 
     img{
-    	max-width:100% !important;
-    	height:auto;
-    	display:block;
-    	border-radius: $border_radius_wall;
+        max-width:100% !important;
+        height:auto;
+        display:block;
+        border-radius: $border_radius_wall;
     }
 
     &.loading{
-    	animation: fadein 1s infinite linear;
-		animation-delay:0.2s;
+        animation: fadein 1s infinite linear;
+        animation-delay:0.2s;
 
-		.foot-buttons{
-			display: none !important;
-		}
+        .foot-buttons{
+            display: none !important;
+        }
     }
 
     .foot-buttons {
-	    float: right;
-	    position: relative;
-	    top: -34px;
-	    right: 10px;
-	    margin-top: -2%;
-	    margin-right: 2%;
+        float: right;
+        position: relative;
+        top: -34px;
+        right: 10px;
+        margin-top: -2%;
+        margin-right: 2%;
 
-	    button {
-		    border: 1px dotted #4e88c5;
-		}
-	}
+        button {
+            border: 1px dotted #4e88c5;
+        }
+    }
 }
 
 
@@ -102,6 +113,25 @@ $border_radius_wall: 10px;
     }
     to {
         opacity:0.8;
+    }
+}
+
+.select-wrapper{
+    border-radius: 20px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    text-align: center;
+    padding: 5px 0;
+
+    select{
+        font-size: 14px;
+        border:0px;
+        width: calc(100% - 10px);
+        background: none;
+
+        &:focus{
+            outline:none;
+        }
     }
 }
 

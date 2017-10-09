@@ -1,6 +1,6 @@
 {
     "name": "RanWall",
-    "version": "0.2.0",
+    "version": "0.3.0",
     "main": "./app/index.html",
     "description": "App for set random wallpapers",
     "repository": "No repository yet",

@@ -7,4 +7,6 @@ package-lock.json
 .sass-cache/**
 app/js/_vendor/**
 app/css/**
-app/fonts/**
+app/fonts/fontawesome**
+logo256.png
+.gitignore
