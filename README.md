@@ -6,7 +6,7 @@ With Ranwall you can discover new wallpapers just doing a click, if you like it 
 ![Screenshoot](screenshoot.png)
 
 ## Download
-Download latest version from (here)[https://github.com/jaumesegarra/ranwall-app/releases] (Only for Windows and macos at the moment)
+Download latest version from [here](https://github.com/jaumesegarra/ranwall-app/releases) (Only for Windows and macos at the moment)
 
 ## Coming
 - [ ] Option to launch at startup
