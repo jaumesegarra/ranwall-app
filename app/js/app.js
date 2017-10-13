@@ -15,6 +15,7 @@ angular.module('app', ['angularRandomString', 'LocalStorageModule'])
 .constant('WALLPAPERS_FOLDER', (process.env[(process.platform == 'win32') ? 'USERPROFILE' : 'HOME'])+"/.ranwall")
 .value('WALLPAPER_NAME', '')
 .value('isConfigWindowOpen', false)
+.value('SRWshortcut_key', { 'modifiers': 'Shift+Command', 'key':'W'})
 .constant('NW', (function(){
 	var requires = {
 		gui: require('nw.gui'),
@@ -22,6 +23,8 @@ angular.module('app', ['angularRandomString', 'LocalStorageModule'])
 		fs: require('fs'),
 		mkdirp: require('mkdirp'),
 		https: require('https'),
+		autoLaunch: require('auto-launch'),
+		dialog: require('nw-dialog')
 	};
 
 	return {
@@ -30,7 +33,9 @@ angular.module('app', ['angularRandomString', 'LocalStorageModule'])
 		wallpaper: requires.wallpaper,
 		fs: requires.fs,
 		mkdirp: requires.mkdirp,
-		https: requires.https
+		https: requires.https,
+		autoLaunch: requires.autoLaunch,
+		dialog: requires.dialog
 	}
 })())
 .config(['NW', 'PLATFORM', 'localStorageServiceProvider', function(NW, _PLATFORM, localStorageServiceProvider){
@@ -44,17 +49,54 @@ angular.module('app', ['angularRandomString', 'LocalStorageModule'])
 	}
 
 }])
-.controller('mainController',['$scope', 'wall', 'localStorageService', 'NW', 'isConfigWindowOpen', 'PLATFORM', 'updater', function($scope, $wall, $localStorageService, NW, _isConfigWindowOpen, PLATFORM, $updater) {
-	$updater.checkUpdate();
+.controller('mainController',['$scope', 'wall', 'localStorageService', 'NW', 'isConfigWindowOpen', 'PLATFORM', 'win', 'updater', 'SRWshortcut_key', 'WALLPAPER_NAME', function($scope, $wall, $localStorageService, NW, _isConfigWindowOpen, PLATFORM, $win, $updater, _SRWshortcut_key, _WALLPAPER_NAME) {
+	function setNewWallpaper() {
+		$wall.new(true, true);
+	}
 
-	NW.win.on('close', function() {
-		NW.gui.App.quit();
-	});
+	var menu = [
+	{
+		"name": "Set new wallpaper!",
+		"key": _SRWshortcut_key.key, 
+		"modifiers": _SRWshortcut_key.modifiers,
+		"click": function(){
+			setNewWallpaper();
+		}
+	},
+	{
+		"separator": 1
+	},
+	{
+		"name":"Show/Hide",
+		"click": function(){
+			$win.toggleShow();
+		}
+	},
+	{
+		"name": "Check for updates",
+		"click": function(){
+			$updater.checkUpdate(true,true);
+		}
+	},
+	{
+		"name": "Exit",
+		"click": function () {
+			NW.gui.App.quit();
+		}
+	}
+	];
+
+	$win.atLaunch(menu);
+	$win.command(_SRWshortcut_key.modifiers+"+"+_SRWshortcut_key.key, setNewWallpaper);
+	$updater.checkUpdate();
 
 	$wall.new();
 
 	$scope.refreshBtnClick = $wall.new;
 	$scope.setBtnClick = $wall.set;
+	$scope.saveasBtnClick = function () {
+		$wall.saveas();
+	}
 
 	$scope.openConfig = function () {
 		if(!_isConfigWindowOpen){
@@ -63,7 +105,7 @@ angular.module('app', ['angularRandomString', 'LocalStorageModule'])
 			NW.gui.Window.open('app/config.html', {
 				position: 'center',
 				width: 466,
-				height: 270,
+				height: 310,
 				resizable:false
 			},
 			function(win){    					
@@ -72,14 +114,24 @@ angular.module('app', ['angularRandomString', 'LocalStorageModule'])
 
 					if (PLATFORM == "mac") {
 						var menu = new NW.gui.Menu({type: "menubar"});
-						menu.createMacBuiltin && menu.createMacBuiltin("on my wall");
+						menu.createMacBuiltin && menu.createMacBuiltin("ranwall");
 						NW.gui.Window.get().menu = menu;
 					}
 				});
 			});
 		}
 	}
-}]).controller('configController',['$scope', 'wall', 'localStorageService', 'USER_RESOLUTION', 'WALLPAPER_PROVIDERS', function($scope, $wall, $localStorageService, _USER_RESOLUTION, _WALLPAPER_PROVIDERS) {
+}]).controller('configController',['$scope', 'wall', 'win', 'localStorageService', 'USER_RESOLUTION', 'WALLPAPER_PROVIDERS', function($scope, $wall, $win, $localStorageService, _USER_RESOLUTION, _WALLPAPER_PROVIDERS) {
+	$scope.launchAtStartup= ($localStorageService.get("configLaunchAtStartup") == undefined || $localStorageService.get("configLaunchAtStartup") == 0) ? false : true;
+	$scope.$watch('launchAtStartup', function() {
+		$win.launchAtStartup($scope.launchAtStartup);
+	}, true);
+
+	$scope.hideAtLaunch = ($localStorageService.get("configHideOnStartup") == undefined || $localStorageService.get("configHideOnStartup") == 0) ? false : true;
+	$scope.$watch('hideAtLaunch', function() {
+		$win.hideOnStartup($scope.hideAtLaunch);
+	}, true);
+
 	var resolution = ($localStorageService.get('user_resolution') == undefined) ? _USER_RESOLUTION : JSON.parse("["+$localStorageService.get('user_resolution')+"]");
 	$scope.res_x = resolution[0];
 	$scope.res_y = resolution[1];

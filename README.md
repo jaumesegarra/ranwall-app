@@ -8,11 +8,8 @@ With Ranwall you can discover new wallpapers just doing a click, if you like it 
 ## Download
 Download latest version from [here](https://github.com/jaumesegarra/ranwall-app/releases) (Only for Windows and macos at the moment)
 
-## Coming
-- [ ] Option to launch at startup
-- [ ] Tray icon
-- [ ] Global command for set a new random wallpaper 
-- [ ] ? Change wallpaper automatically every x minutes
+## Coming?
+- [ ] Change wallpaper automatically every x minutes
 
 ## Thanks to:
 * [unsplash.it](https://unsplash.it)

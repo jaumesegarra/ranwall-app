@@ -1,2 +1,6 @@
-##Changes in v. 0.3.1
-- Update manager (If has a new version available, ranwall tell you it).
+##Changes in v. 0.4.0
+- Now you can change the wallpaper with a command! (Cmd+Shift+W on MacOS, Win+Shift+W on Windows): This requires the application to be open
+- Possibility to "save as" the wallpaper
+- Configuration window changes
+- Tray icon
+- Launch at Startup option

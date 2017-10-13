@@ -6,12 +6,12 @@ module.exports = function (grunt) {
     var package = require('./package.json')
     if (!!package.dependencies) {
         modules = Object.keys(package.dependencies)
-            .filter(function (m) {
-                return m != 'nodewebkit'
-            })
-            .map(function (m) {
-                return './node_modules/' + m + '/**/*'
-            });
+        .filter(function (m) {
+            return m != 'nodewebkit'
+        })
+        .map(function (m) {
+            return './node_modules/' + m + '/**/*'
+        });
     }
     //Grunt Config
     grunt.initConfig({
@@ -34,53 +34,53 @@ module.exports = function (grunt) {
                   keepExpandedHierarchy: false,
                   stripGlobBase: true,
                   files: [
-                    'dist/css/bootstrap.css',
-                    'dist/js/bootstrap.min.js',
-                    'themes/base/minified/**'
+                  'dist/css/bootstrap.css',
+                  'dist/js/bootstrap.min.js',
+                  'themes/base/minified/**'
                   ]
-                },
-                'font-awesome': {
+              },
+              'font-awesome': {
                   expand: false,
                   css_dest: 'app/css/',
                   keepExpandedHierarchy: false,
                   stripGlobBase: true,
                   files: [
-                    'css/font-awesome.min.css',
-                    'fonts/*'
+                  'css/font-awesome.min.css',
+                  'fonts/*'
                   ]
-                }
               }
-            }
           }
+      }
+  }
+},
+sass: {
+    dist: {
+        options: {
+            style: 'compressed',
+            sourcemap: 'none'
         },
-        sass: {
-            dist: {
-                options: {
-                    style: 'compressed',
-                    sourcemap: 'none'
-                },
-                files: [{
-                    expand: true,
-                    cwd: 'app/scss',
-                    src: ['*.scss'],
-                    dest: 'app/css',
-                    ext: '.css'
-                }]
-            }
-        },
-        watch: {
-            css: {
-              files: ['app/scss/**/*.scss'],
-              tasks: ['sass'],
-            }
-        },
-        nwjs: {
-            options: {
-                cacheDir: './build/cache',
-                macIcns: './app-icon.icns',
-                winIco: './app-icon.ico',
-                version: '0.25.1',
-                flavor: 'normal',
+        files: [{
+            expand: true,
+            cwd: 'app/scss',
+            src: ['*.scss'],
+            dest: 'app/css',
+            ext: '.css'
+        }]
+    }
+},
+watch: {
+    css: {
+      files: ['app/scss/**/*.scss'],
+      tasks: ['sass'],
+  }
+},
+nwjs: {
+    options: {
+        cacheDir: './build/cache',
+        macIcns: './app-icon.icns',
+        winIco: './app-icon.ico',
+        version: '0.25.1',
+        flavor: 'normal',
                 buildDir: './builds', // Where the build version your app is saved
             },
             src: ['./package.json', './app/**/*', '!./app/scss/**/**'].concat(modules) // Your NW.js app
@@ -101,28 +101,28 @@ module.exports = function (grunt) {
         // If no platform where specified, determine current platform
         if (arguments.length === 0) {
             if (process.platform === 'darwin') platforms.push('osx64')
-            else if (process.platform === 'win32') platforms.push('win')
-            else if (process.arch === 'ia32') platforms.push('linux32')
-            else if (process.arch === 'x64') platforms.push('linux64')
+                else if (process.platform === 'win32') platforms.push('win')
+                    else if (process.arch === 'ia32') platforms.push('linux32')
+                        else if (process.arch === 'x64') platforms.push('linux64')
 
-        } else {
-            if (platform === 'win') platforms.push('win')
-            if (platform === 'mac') platforms.push('osx64')
-            if (platform === 'linux32') platforms.push('linux32')
-            if (platform === 'linux34') platforms.push('linux64')
+                    } else {
+                        if (platform === 'win') platforms.push('win')
+                            if (platform === 'mac') platforms.push('osx64')
+                                if (platform === 'linux32') platforms.push('linux32')
+                                    if (platform === 'linux34') platforms.push('linux64')
 
             // Build for All platforms
-            if (platform === 'all') platforms = ['win', 'osx64', 'linux32', 'linux64']
+        if (platform === 'all') platforms = ['win', 'osx64', 'linux32', 'linux64']
 
-        }
+    }
 
 
-        if (platforms) {
-            grunt.config('nwjs.options.platforms', platforms);
-        }
+if (platforms) {
+    grunt.config('nwjs.options.platforms', platforms);
+}
 
-        grunt.task.run(['sass']);
-        grunt.task.run(['nwjs']);
+grunt.task.run(['sass']);
+grunt.task.run(['nwjs']);
 
-    });
+});
 };

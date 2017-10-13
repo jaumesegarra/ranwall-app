@@ -8,7 +8,7 @@
  * Factory in the app
  */
  angular.module('app')
- .factory('wall', ['WALLPAPER_PROVIDERS', 'USER_RESOLUTION', 'WALLPAPER_NAME', 'WALLPAPERS_FOLDER', 'NW', 'localStorageService', 'randomString', function(_WALLPAPER_PROVIDERS, _USER_RESOLUTION,  _WALLPAPER_NAME, _WALLPAPERS_FOLDER, NW, $localStorageService, $randomString) {
+ .factory('wall', ['WALLPAPER_PROVIDERS', 'USER_RESOLUTION', 'WALLPAPER_NAME', 'WALLPAPERS_FOLDER', 'NW', 'localStorageService', 'randomString', 'win', function(_WALLPAPER_PROVIDERS, _USER_RESOLUTION,  _WALLPAPER_NAME, _WALLPAPERS_FOLDER, NW, $localStorageService, $randomString, $win) {
   var obj = {
     refresh_preview: function(){
       var wall_preview = angular.element(document.querySelector("#random-wallpaper-active > img"));
@@ -39,7 +39,9 @@
           return true;
         }
       },
-      new: function(){   
+      new: function(autoSet, notification){   
+        if(notification)
+          var loading_notification = $win.create_notification("Wait a second!", "Downloading new wallpaper...");
 
         var wall_preview = angular.element(document.querySelector("#random-wallpaper-active"));
         wall_preview.addClass('loading');
@@ -75,6 +77,12 @@
 
               var wall_preview = angular.element(document.querySelector("#random-wallpaper-active"));
               wall_preview.removeClass('loading');
+
+              if(loading_notification)
+                loading_notification.close();
+
+              if(autoSet)
+                obj.set();
             });
           }
 
@@ -92,6 +100,12 @@
         NW.wallpaper.set(_WALLPAPERS_FOLDER + '/' + _WALLPAPER_NAME + '.jpeg').then(() => {
           $localStorageService.set('wallpaper_name', _WALLPAPER_NAME);
         });
+      },
+      saveas: function(){
+        NW.dialog.setContext(document);
+        NW.dialog.saveFileDialog(_WALLPAPER_NAME, '.jpeg', function(result) {
+          NW.fs.createReadStream(_WALLPAPERS_FOLDER + '/' + _WALLPAPER_NAME + '.jpeg').pipe(NW.fs.createWriteStream(result));
+        })
       }
     }
     return obj;
