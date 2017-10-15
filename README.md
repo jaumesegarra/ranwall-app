@@ -2,7 +2,6 @@ ranwall
 ====================================
 Are you tired of your bored wallpaper 😑? <br /> <br />
 With ranwall you can discover more than millions wallpapers just doing a click 😮, if you liked any you can set it to your desktop with an other click. **EASY** 🌄! 
-<br />
 
 ![Screenshoot](screenshoot.png)
 
