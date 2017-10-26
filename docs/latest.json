@@ -1,6 +1,6 @@
 {
 	"version": "0.4.1",
-	"changes": "##Changes in v. 0.4.1 &#013;&#010; - Solved problem with unsplash.it provider (New url and name)&#013;&#010; - Minor updates changes &#013;&#010; - Solved problems when they are a provider error",
+	"changes": "##Changes in v. 0.4.1 &#10; - Solved problem with unsplash.it provider (New url and name)&#10; - Minor updates changes &#10; - Solved problems when they are a provider error",
 	"download_url": {
 		"win32": "https://github.com/jaumesegarra/ranwall-app/releases/download/0.4.1/ranwall-setup32.exe",
 		"win64": "https://github.com/jaumesegarra/ranwall-app/releases/download/0.4.1/ranwall-setup64.exe",
