@@ -19,5 +19,5 @@ Download latest version from [here](https://github.com/jaumesegarra/ranwall-app/
 - [ ] Change wallpaper automatically every x minutes
 
 ## Thanks to:
-* [unsplash.it](https://unsplash.it)
+* [picsum.photos](https://picsum.photos)
 * [unsplash.com](https://unsplash.com)
