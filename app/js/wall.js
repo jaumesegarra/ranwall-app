@@ -40,60 +40,66 @@
         }
       },
       new: function(autoSet, notification){   
-        if(notification)
-          var loading_notification = $win.create_notification("Wait a second!", "Downloading new wallpaper...");
-
         var wall_preview = angular.element(document.querySelector("#random-wallpaper-active"));
-        wall_preview.addClass('loading');
 
-        var refresh_button = angular.element(document.querySelector("#refresh-random-wallpaper"));
-        refresh_button.attr("disabled", "disabled");
+        if(!wall_preview.hasClass("loading")){
+          if(notification)
+            var loading_notification = $win.create_notification("Wait a second!", "Downloading new wallpaper...");
 
-        _WALLPAPER_NAME = $randomString();
+          wall_preview.addClass('loading');
 
-        var output = _WALLPAPERS_FOLDER + '/' + _WALLPAPER_NAME + '.jpeg';
+          function evLoadIMG(){
+            this.style.display = 'block';
+            wall_preview.removeClass('error');
+            wall_preview.removeClass('loading');
 
-        if(obj._checkAppFolder()){
-          var file = NW.fs.createWriteStream(output);
-
-          var resolution = ($localStorageService.get('user_resolution') == undefined) ? _USER_RESOLUTION : JSON.parse("["+$localStorageService.get('user_resolution')+"]");
-          
-          function getRandomProvider() {
-            return _WALLPAPER_PROVIDERS[Math.floor(Math.random() * _WALLPAPER_PROVIDERS.length)].url;
+            if(autoSet)
+              obj.set();
           }
 
-          var url_provider = ($localStorageService.get('wall_provider') == undefined) ? getRandomProvider() : ((parseInt($localStorageService.get('wall_provider')) == -1) ? getRandomProvider() : _WALLPAPER_PROVIDERS[parseInt($localStorageService.get('wall_provider'))].url);
-          var url = url_provider.replace("{x}",resolution[0]).replace("{y}",resolution[1]);
-          
-          function createImage(response) {
-            response.pipe(file);
+          document.querySelector("#random-wallpaper-active > img").removeEventListener("load", evLoadIMG, false);
 
-            response.on('end', function(){
+          document.querySelector("#random-wallpaper-active > img").addEventListener("load", evLoadIMG, false);
 
-              var refresh_button = angular.element(document.querySelector("#refresh-random-wallpaper"));
-              refresh_button.removeAttr("disabled");
 
-              obj.refresh_preview();
+          _WALLPAPER_NAME = $randomString();
 
-              var wall_preview = angular.element(document.querySelector("#random-wallpaper-active"));
-              wall_preview.removeClass('loading');
+          var output = _WALLPAPERS_FOLDER + '/' + _WALLPAPER_NAME + '.jpeg';
 
-              if(loading_notification)
-                loading_notification.close();
+          if(obj._checkAppFolder()){
+            var file = NW.fs.createWriteStream(output);
 
-              if(autoSet)
-                obj.set();
+            var resolution = ($localStorageService.get('user_resolution') == undefined) ? _USER_RESOLUTION : JSON.parse("["+$localStorageService.get('user_resolution')+"]");
+            
+            function getRandomProvider() {            
+              return _WALLPAPER_PROVIDERS[Math.floor(Math.random() * _WALLPAPER_PROVIDERS.length)];
+            }
+
+            var provider = ($localStorageService.get('wall_provider') == undefined) ? getRandomProvider() : ((parseInt($localStorageService.get('wall_provider')) == -1) ? getRandomProvider() : _WALLPAPER_PROVIDERS[parseInt($localStorageService.get('wall_provider'))]);
+            var url = provider.url.replace("{x}",resolution[0]).replace("{y}",resolution[1]);
+            
+            function createImage(response) {
+              response.pipe(file);
+
+              response.on('end', function(){
+
+                obj.refresh_preview();
+
+                if(loading_notification)
+                  loading_notification.close();
+              });
+            }
+
+            var request = NW.https.get(url, function(response) {
+              switch (provider.get.type) {
+                case "json":
+                break;
+                default:
+                createImage(response);
+                break;
+              }
             });
           }
-
-          var request = NW.https.get(url, function(response) {
-            if(response.statusCode==302)
-              NW.https.get(response.headers.location, function(response) {
-                createImage(response);
-              });
-            else
-              createImage(response);
-          });
         }
       },
       set: function(){

@@ -5,21 +5,30 @@
     <title>
         ranwall
     </title>
-    <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/line-awesome.min.css"/>
     <link rel="stylesheet" type="text/css" href="css/app.css">
 </head>
 
+
 <body ng-controller="mainController">
+
     <div ng-include src="'partials/header.html'"></div>
 
     <div id="random-wallpaper-active">
         <img/>
+        <div class="on-error">
+            <h2>Error trying load wallpaper</h2>
+            <p>Will be retry at 10 seconds automatically.</p>
+        </div>
+
         <div class="foot-buttons">
-            <button class="very light" id="saveas-wallpaper" ng-click="saveasBtnClick()"><i class="fa fa-download"></i></button>
+            <button class="very light" id="saveas-wallpaper" ng-click="saveasBtnClick()"><i class="la la-download"></i></button>
             <button class="light" id="set-wallpaper" ng-click="setBtnClick()">set</button>
         </div>
     </div>
-
+    
+    <script src="js/web-pull-to-refresh/hammer.2.0.4.js"></script>
+    <script src="js/web-pull-to-refresh/wptr.1.1.js"></script>
     <script src="js/_vendor/angular/angular.js"></script>
     <script src="js/_vendor/angular-random-string/angular-random-string.js"></script>
     <script src="js/_vendor/angular-local-storage/angular-local-storage.js"></script>

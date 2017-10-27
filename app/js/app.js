@@ -4,12 +4,18 @@ angular.module('app', ['angularRandomString', 'LocalStorageModule'])
 .constant('USER_RESOLUTION', [window.screen.width, window.screen.height])
 .constant('WALLPAPER_PROVIDERS', [
 {
-	'name': 'unsplash.it',
-	'url': 'https://unsplash.it/{x}/{y}/?random'
+	'name': 'picsum.photos',
+	'url': 'https://picsum.photos/{x}/{y}/?random',
+	'get': {
+		'type': 'image'
+	}
 },
 {
 	'name': 'unsplash.com',
-	'url': 'https://source.unsplash.com/random/{x}x{y}'
+	'url': 'https://source.unsplash.com/random/{x}x{y}',
+	'get': {
+		'type': 'image'
+	}
 }])
 .constant('PLATFORM', (process.platform == "darwin") ? 'mac' : ((process.platform == "win32" && process.arch == "x64") ? 'win64' : 'win32'))
 .constant('WALLPAPERS_FOLDER', (process.env[(process.platform == 'win32') ? 'USERPROFILE' : 'HOME'])+"/.ranwall")
@@ -22,7 +28,7 @@ angular.module('app', ['angularRandomString', 'LocalStorageModule'])
 		wallpaper: require('wallpaper'),
 		fs: require('fs'),
 		mkdirp: require('mkdirp'),
-		https: require('https'),
+		https: require('follow-redirects').https,
 		autoLaunch: require('auto-launch'),
 		dialog: require('nw-dialog')
 	};
@@ -47,9 +53,34 @@ angular.module('app', ['angularRandomString', 'LocalStorageModule'])
 		menu.createMacBuiltin && menu.createMacBuiltin("ranwall");
 		NW.gui.Window.get().menu = menu;
 	}
-
 }])
 .controller('mainController',['$scope', 'wall', 'localStorageService', 'NW', 'isConfigWindowOpen', 'PLATFORM', 'win', 'updater', 'SRWshortcut_key', 'WALLPAPER_NAME', function($scope, $wall, $localStorageService, NW, _isConfigWindowOpen, PLATFORM, $win, $updater, _SRWshortcut_key, _WALLPAPER_NAME) {
+	var ranImg = document.querySelector("#random-wallpaper-active > img");
+	ranImg.addEventListener("error", evErrorIMG, false);
+	ranImg.ondragstart = function() { return false; };
+
+	function evErrorIMG() {
+		this.removeAttribute("src");
+		this.style.display = 'none';
+
+		var wall_preview = angular.element(document.querySelector("#random-wallpaper-active"));
+		wall_preview.removeClass('loading');
+		wall_preview.addClass('error');
+
+		setTimeout(function(){
+			$wall.new();
+		},10000);
+	}
+
+	WebPullToRefresh.init({
+		loadingFunction: function (){ 
+			return new Promise( function( resolve, reject ) {	
+				resolve();
+				$wall.new(); 
+			})
+		}
+	});
+
 	function setNewWallpaper() {
 		$wall.new(true, true);
 	}
@@ -178,7 +209,7 @@ angular.module('app', ['angularRandomString', 'LocalStorageModule'])
 }]).controller('updateController',['$scope','localStorageService', 'updater', 'NW', 'PLATFORM', function($scope, $localStorageService, $updater, NW, _PLATFORM){
 	var manifest = JSON.parse(localStorage.getItem("ls.nv_manifest"));
 	$scope.version = manifest.version;
-	$scope.changes = $localStorageService.get("nv_changes");
+	$scope.changes = manifest.changes;
 
 	$scope.download = function () {
 		var url = manifest.download_url[_PLATFORM];

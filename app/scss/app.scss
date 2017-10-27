@@ -1,4 +1,7 @@
-@import 'fonts';
+.la{
+    font-weight: bold;
+    font-size: 17px;
+}
 
 body {
     background-color: #30383c;
@@ -7,6 +10,7 @@ body {
     padding: 20px 25px 10px 25px;
     max-width: 800px;
     margin: 0 auto;
+    overflow: hidden;
 }
 
 ::selection{
@@ -17,13 +21,9 @@ header{
 
     h1 {
         margin: 0px 0px 20px 0px;
-        text-transform: capitalize;
         display: inline-block;
-        font-family: 'Comfortaa', cursive;
-        font-weight: bold;
-        cursor: default;
         position: relative;
-        top: 2px;
+        top: 13px;
     }
 
     button {
@@ -87,17 +87,44 @@ $border_radius_wall: 10px;
     background-color: #9c9898;
     border-radius: $border_radius_wall;
     margin-bottom: 15px;
-    
+
     img{
+        display:none;
         max-width:100% !important;
         height:auto;
         display:block;
         border-radius: $border_radius_wall;
     }
 
+    .on-error{
+        display: none;
+
+        position: absolute;
+        padding: 0 15px;
+        color: #e5e8e8;
+
+        h2{
+            margin: 20px 0 10px;
+        }
+
+        p{
+            margin: 0;
+        }
+    }
+
     &.loading{
         animation: fadein 1s infinite linear;
         animation-delay:0.2s;
+
+        .foot-buttons{
+            display: none !important;
+        }
+    }
+
+    &.error{
+        .on-error{
+            display: block;
+        }
 
         .foot-buttons{
             display: none !important;
@@ -184,7 +211,7 @@ body.config{
         height: calc(100% - 70px);
         position: fixed;
         overflow: auto;
-        
+
         table{
             width: calc(100% - 25px);
         }

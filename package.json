@@ -1,6 +1,6 @@
 {
     "name": "RanWall",
-    "version": "0.4.0",
+    "version": "0.4.1",
     "main": "./app/index.html",
     "description": "App for set random wallpapers",
     "repository": "https://github.com/jaumesegarra/ranwall-app",
@@ -10,6 +10,7 @@
     },
     "dependencies": {
         "auto-launch": "^5.0.1",
+        "follow-redirects": "^1.2.5",
         "mkdirp": "^0.5.1",
         "nw-dialog": "^1.0.7",
         "pify": "^3.0.0",
@@ -35,7 +36,7 @@
         "width": 710,
         "height": 475,
         "icon": "./app/img/logo.png",
-        "show": false
+        "show": true
     },
     "download_url": {
         "win32": "https://github.com/jaumesegarra/ranwall-app/releases/download/0.4.0/ranwall-setup32.exe",
