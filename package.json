@@ -36,7 +36,7 @@
         "width": 710,
         "height": 475,
         "icon": "./app/img/logo.png",
-        "show": true
+        "show": false
     },
     "download_url": {
         "win32": "https://github.com/jaumesegarra/ranwall-app/releases/download/0.4.0/ranwall-setup32.exe",
