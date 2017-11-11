@@ -1,0 +1,70 @@
+.waller{
+	width: 100%;
+	height: 100vh;
+	background: url('../img/wall.jpeg');
+	background-size: cover;
+	background-repeat: no-repeat;
+	display: block;
+	position: fixed;
+	top: 0;
+	z-index: -10;
+}
+
+img.app{
+	width: 100%;
+	border-radius: 10px
+}
+
+content{
+	margin-top: 100vh;
+	padding: 0 0 !important;
+	z-index: 10;
+}
+
+content > div{
+	border-top: 1px solid #ccc;
+	background-color: white;
+	padding: 20px 0;
+}
+
+body.no-fixed-waller .waller{
+	position: relative;
+	z-index: 1000;
+}
+
+body.no-fixed-waller img.app{
+	opacity: 0;
+}
+
+body.no-fixed-waller content {
+	margin: 0 !important;
+}
+
+body.no-fixed-waller content > div{
+	padding: 70px 0;
+}
+
+@media screen and (max-width: 945px){
+	.waller{
+		height: inherit;
+		padding-bottom: 40px; 
+		position: relative;
+	}
+
+	content{
+		margin-top: 0px
+	}
+
+	img.app{
+		margin: 0 20px;
+		width: calc(100% - 40px);
+	}
+
+	section{
+		margin: 0 20px 20px;
+	}
+
+	body.no-fixed-waller content > div{
+		padding: 90px 0;
+	}
+}
