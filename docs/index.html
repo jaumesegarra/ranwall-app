@@ -23,15 +23,15 @@
 				</div>
 			</div>
 		</header>
-		<div class="center">
-			<img src="img/screnshoot.png" class="app" />
+		<div class="center" id="app-template">
+			<img src="img/screnshoot.png"/>
 		</div>
 	</div>
 	<content>
 		<div>
 			<div class="center">
-				<section>
-					<h2 id="whats">What's that?</h2>
+				<section id="whats">
+					<h2>What's that?</h2>
 					<p>Are you tired of your bored wallpaper 😑?</p>
 					<p>ranwall is an app for discover new wallpapers just doing a click 😮, if you liked some you can set it to your desktop with an other click. EASY 🌄!</p>
 				</section>
@@ -43,22 +43,7 @@
 			</div>
 		</div>
 	</content>
-	<script type="text/javascript" src="js/crucss.min.js"></script>
-	<script type="text/javascript">
-		var stickyHeader = document.getElementsByTagName('header')[0];
-		var styckyDiv = document.querySelector(".waller");
-
-		window.onscroll = function(e) {
-			var bodyScrollTop = e.pageY || document.documentElement.scrollTop || document.body.scrollTop;
-
-			if (bodyScrollTop > styckyDiv.clientHeight+stickyHeader.clientHeight-(stickyHeader.clientHeight)) {
-				document.body.classList.add("no-fixed-waller");
-				stickyHeader.classList.add('fixed');
-			} else {
-				document.body.classList.remove("no-fixed-waller");
-				stickyHeader.classList.remove('fixed');
-			}
-		};
-	</script>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/main.js"></script>
 </body>
 </html>
