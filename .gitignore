@@ -10,3 +10,4 @@ app/css/**
 logo256.png
 .gitignore
 dist/**/*
+fix_win.sh

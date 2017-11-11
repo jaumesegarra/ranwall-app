@@ -27,20 +27,31 @@
  			var shortcut = new gui.Shortcut(option);
  			gui.App.registerGlobalHotKey(shortcut);
  		},
- 		create_notification: function (title, text, click, autoclose) {
+ 		create_notification: function (title, text, onclick, onclose, autoclose) {
  			var notification = new Notification(title,{
- 				icon: "./img/logo.png",
+ 				/*icon: "./img/logo.png",*/
  				body: text
  			});
 
  			notification.onclick = function () {
- 				if(click !== undefined)
- 					click();
+ 				notification.close();
+
+ 				if(onclose !== undefined)
+ 					onclose();
+ 				
+
+ 				if(onclick !== undefined)
+ 					onclick();
  			}
 
  			notification.onshow = function () {
  				if(autoclose)
- 					setTimeout(function() {notification.close();}, 6000);
+ 					setTimeout(function() {
+ 						notification.close(); 
+
+ 						if(onclose !== undefined)
+ 							onclose()
+ 					}, 6000);
  			}
 
  			return notification;
@@ -61,7 +72,6 @@
 
  			obj.traymenu(AppMenu);
  			obj._checkIfShowAtLaunch();
- 			//obj.resizeHeight();
  		},
  		toggleShow: function () {
  			if(obj.statusShow)
@@ -73,19 +83,29 @@
  			NW.win.setShowInTaskbar(true);
  			NW.win.show();
  			obj.statusShow = true;
+
+ 			if(obj._hideNotification){
+ 				obj._hideNotification.close();
+ 				obj._hideNotification = undefined;
+ 			}
  		},
+ 		_hideNotification: undefined,
  		hide: function(showNotification){
  			NW.win.hide();
  			NW.win.setShowInTaskbar(false);
  			obj.statusShow = false;
 
- 			if(showNotification)
- 				var notification = obj.create_notification("ranwall is hide!", "This app is hide, click to show!", function(){obj.show(); notification.close();}, true);
+ 			if(showNotification && !obj._hideNotification){
+ 				obj._hideNotification = obj.create_notification("App is hide!", "This app is hide, click to show!", function(){obj.show();}, function(){ obj._hideNotificationOpen = undefined; }, true);
+ 			}
  		},
  		traymenu: function(AppMenu){
  			var iconbar = (process.platform == "darwin") ? "./app/img/logo_barMacos.png" : "./app/img/logo_barWin.png";
 
  			var tray = new NW.gui.Tray({icon: iconbar });
+ 			tray.on("click", function(){
+ 				obj.toggleShow();
+ 			});
 
  			var menu = new NW.gui.Menu();
 
@@ -118,7 +138,8 @@
 
  			var ranwallAutoLauncher = new NW.autoLaunch({
  				name: 'ranwall',
- 				path: stPath
+ 				path: stPath,
+ 				isHidden: true
  			});
 
  			ranwallAutoLauncher.isEnabled().then(function(isEnabled){
@@ -135,7 +156,8 @@
 
  			var ranwallAutoLauncher = new NW.autoLaunch({
  				name: 'ranwall',
- 				path: stPath
+ 				path: stPath,
+ 				isHidden: true
  			});
 
  			if(isEnabled){

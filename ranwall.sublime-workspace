@@ -1,0 +1,1304 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"pa",
+				"padding-bottom"
+			],
+			[
+				"local",
+				"localStorage\t: Storage Window"
+			],
+			[
+				"loca",
+				"localStorage\t: Storage Window"
+			],
+			[
+				"prov",
+				"providers_active"
+			],
+			[
+				"re",
+				"require"
+			],
+			[
+				"requ",
+				"requires"
+			],
+			[
+				"htt",
+				"http"
+			],
+			[
+				"le",
+				"length\t: int String"
+			],
+			[
+				"mod",
+				"modifiers"
+			],
+			[
+				"updat",
+				"updateController.js"
+			],
+			[
+				"mou",
+				"mousetrap_record"
+			],
+			[
+				"bui",
+				"buildDir"
+			],
+			[
+				"t",
+				"text_search\tproperty"
+			],
+			[
+				"querySele",
+				"querySelectorAll\t( selectors: DOMString ): NodeList Document"
+			],
+			[
+				"remo",
+				"removeEventListener\t( type: DOMString, callback: EventListener, capture?: boolean ): void EventTarget"
+			],
+			[
+				"tag",
+				"target\t: EventTarget Event"
+			],
+			[
+				"dco",
+				"document\t: Document Window"
+			],
+			[
+				"sty",
+				"style_\t$1 = '' Style CSS"
+			],
+			[
+				"parent",
+				"parentNode\t(): Node TreeWalker"
+			],
+			[
+				"margin-",
+				"margin-top"
+			],
+			[
+				"ma",
+				"margin"
+			],
+			[
+				"ine",
+				"inline-block"
+			],
+			[
+				"margin",
+				"margin-left"
+			],
+			[
+				"list",
+				"list-style-type"
+			],
+			[
+				"cla",
+				"classList"
+			],
+			[
+				"isN",
+				"isNavDropdown"
+			],
+			[
+				"pare",
+				"parentNode\t(): Node TreeWalker"
+			],
+			[
+				"wi",
+				"width\t = 'initial' Style CSS"
+			],
+			[
+				"getee",
+				"getElementsByClassName\t( classNames: DOMString ): HTMLCollection Element"
+			],
+			[
+				"visib",
+				"visibility\t Style CSS"
+			],
+			[
+				"class",
+				"classList\t: DOMTokenList Element"
+			],
+			[
+				"q",
+				"querySelector\t( selectors: DOMString ): Element (Selectors) Element"
+			],
+			[
+				"styl",
+				"style\t Style CSS"
+			],
+			[
+				"header",
+				"headerDropdowns"
+			],
+			[
+				"que",
+				"querySelectorAll\t( selectors: DOMString ): NodeList Element"
+			],
+			[
+				"ba",
+				"background"
+			],
+			[
+				"ali",
+				"align-items"
+			],
+			[
+				"al",
+				"align-self"
+			],
+			[
+				"getel",
+				"getElementsByTagName\t( localName: DOMString ): HTMLCollection Document"
+			],
+			[
+				"quer",
+				"querySelector\t( selectors: DOMString ): Element Document"
+			],
+			[
+				"a",
+				"auto"
+			],
+			[
+				"textal",
+				"text-align"
+			],
+			[
+				"no",
+				"nowrap"
+			],
+			[
+				"overf",
+				"overflow-x"
+			],
+			[
+				"inl",
+				"inline-block"
+			],
+			[
+				"backg",
+				"background-color"
+			],
+			[
+				"text",
+				"text-orientation"
+			],
+			[
+				"font-s",
+				"font-size"
+			],
+			[
+				"c",
+				"class\tAttr"
+			],
+			[
+				"di",
+				"display"
+			],
+			[
+				"in",
+				"inline-block"
+			],
+			[
+				"i",
+				"inline"
+			],
+			[
+				"li",
+				"li\tTag"
+			],
+			[
+				"u",
+				"ul\tTag"
+			],
+			[
+				"flex",
+				"flex-flow"
+			],
+			[
+				"f",
+				"flex-start"
+			],
+			[
+				"ds",
+				"display"
+			],
+			[
+				"border-r",
+				"border-radius"
+			],
+			[
+				"fon",
+				"font-weight"
+			],
+			[
+				"mar",
+				"margin"
+			],
+			[
+				"wid",
+				"width"
+			],
+			[
+				"backr",
+				"background-color"
+			],
+			[
+				"real",
+				"reload\t(): void Location"
+			],
+			[
+				"h",
+				"header\tTag"
+			],
+			[
+				"bacgr",
+				"background-color"
+			],
+			[
+				"_tim",
+				"_time"
+			],
+			[
+				"curre",
+				"current_game"
+			],
+			[
+				"fun",
+				"fun\tFunction"
+			],
+			[
+				"co",
+				"color"
+			],
+			[
+				"fullsr",
+				"fullscreenEnabled\t: boolean Document"
+			],
+			[
+				"els",
+				"else"
+			],
+			[
+				"cl",
+				"click"
+			],
+			[
+				"func",
+				"function"
+			],
+			[
+				"createno",
+				"create_notification"
+			],
+			[
+				"comm",
+				"command"
+			],
+			[
+				"da",
+				"dataJSON"
+			],
+			[
+				"geti",
+				"getItem\t( key: DOMString ): DOMString Storage"
+			],
+			[
+				"seti",
+				"setItem\t( key: DOMString, value: DOMString ): void Storage"
+			],
+			[
+				"cosn",
+				"console"
+			],
+			[
+				"backgro",
+				"background"
+			],
+			[
+				"background",
+				"background-color"
+			],
+			[
+				"sec",
+				"sections"
+			],
+			[
+				"parte",
+				"partesMuñeco"
+			],
+			[
+				"_for",
+				"_forEach\tIterates over elements of a collection, executing the callback for each element."
+			],
+			[
+				"_eac",
+				"_forEach\tIterates over elements of a collection, executing the callback for each element."
+			],
+			[
+				"_fo",
+				"_forEach\tIterates over elements of a collection, executing the callback for each element."
+			],
+			[
+				"pala",
+				"palabras"
+			],
+			[
+				"_ran",
+				"_random\tProduces a random number between min and max (inclusive)."
+			],
+			[
+				"impl",
+				"implement"
+			],
+			[
+				"me",
+				"meta\tTag"
+			],
+			[
+				"sett",
+				"setTimeout\t( handler: any, timeout?: long, arguments_..: any ): long Window"
+			],
+			[
+				"pad",
+				"padding-top"
+			],
+			[
+				"spl",
+				"splice\t( start: int, deleteCount: int, items_..: any ): Array Array"
+			],
+			[
+				"partd",
+				"partidas_guardadas"
+			],
+			[
+				"partidad",
+				"partidas_guardadas"
+			],
+			[
+				"parse",
+				"parseInt\t( s: string, radix: int ): int Global"
+			],
+			[
+				"nive",
+				"nivel_data"
+			],
+			[
+				"_",
+				"_usuarioDiv"
+			],
+			[
+				"appe",
+				"appendChild\t( node: Node ): Node Node"
+			],
+			[
+				"partdi",
+				"partidas"
+			],
+			[
+				"cre",
+				"createElement\t( localName: DOMString ): Element Document"
+			],
+			[
+				"cerr",
+				"cerrar_alerta"
+			],
+			[
+				"table",
+				"tableroY"
+			],
+			[
+				"tabler",
+				"tableroX"
+			],
+			[
+				"usu",
+				"usuarioTxt"
+			],
+			[
+				"gete",
+				"getElementById\t( elementId: DOMString ): Element Document"
+			],
+			[
+				"locla",
+				"localStorage\t: Storage Window"
+			],
+			[
+				"mostrar",
+				"mostrar_alerta_dada"
+			],
+			[
+				"clas",
+				"className\t: DOMString Element"
+			],
+			[
+				"backgroun",
+				"background-size"
+			],
+			[
+				"geteel",
+				"getElementById\t( elementId: DOMString ): Element Document"
+			],
+			[
+				"va",
+				"value"
+			],
+			[
+				"conso",
+				"console_log"
+			],
+			[
+				"x_",
+				"x_el"
+			],
+			[
+				"lo",
+				"log\t( x: number ): number Math"
+			],
+			[
+				"preve",
+				"preventDefault\t(): void Event"
+			],
+			[
+				"jugar",
+				"jugarNivelCustomBtn"
+			],
+			[
+				"ac",
+				"action\tAttr"
+			],
+			[
+				"juga",
+				"jugarNivelCustomButton"
+			],
+			[
+				"bac",
+				"background-color"
+			],
+			[
+				"app",
+				"appendChild\t( node: Node ): Node Node"
+			],
+			[
+				"nor",
+				"noresultados"
+			],
+			[
+				"grid-t",
+				"grid-template-areas"
+			],
+			[
+				"grid",
+				"grid-row-start"
+			],
+			[
+				"parti",
+				"partida"
+			],
+			[
+				"add",
+				"addEventListener\t( type: DOMString, callback: EventListener, capture?: boolean ): void EventTarget"
+			],
+			[
+				"salirpa",
+				"salirPartidaBtn"
+			],
+			[
+				"sal",
+				"salirPartida"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "app/js/app.js",
+			"settings":
+			{
+				"buffer_size": 2224,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "app/js/updateController.js",
+			"settings":
+			{
+				"buffer_size": 995,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/js/updater.js",
+			"settings":
+			{
+				"buffer_size": 1894,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/js/configController.js",
+			"settings":
+			{
+				"buffer_size": 4830,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/config.html",
+			"settings":
+			{
+				"buffer_size": 3407,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/scss/app.scss",
+			"settings":
+			{
+				"buffer_size": 4122,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/index.html",
+			"settings":
+			{
+				"buffer_size": 1412,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "app/js/mainController.js",
+			"settings":
+			{
+				"buffer_size": 1691,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/js/wall.js",
+			"settings":
+			{
+				"buffer_size": 6015,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/js/win.js",
+			"settings":
+			{
+				"buffer_size": 4244,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "package.json",
+			"settings":
+			{
+				"buffer_size": 1458,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 392.0,
+		"last_filter": "css",
+		"selected_items":
+		[
+			[
+				"css",
+				"Set Syntax: CSS"
+			],
+			[
+				"html",
+				"Set Syntax: HTML"
+			],
+			[
+				"jav",
+				"Set Syntax: JavaScript"
+			],
+			[
+				"inst",
+				"Package Control: Install Package"
+			],
+			[
+				"ins",
+				"Package Control: Install Package"
+			],
+			[
+				"ja",
+				"Set Syntax: JavaScript"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"",
+				"Preferences: Settings"
+			],
+			[
+				"pack",
+				"Preferences: Browse Packages"
+			],
+			[
+				"htm",
+				"Set Syntax: HTML"
+			],
+			[
+				"javas",
+				"Set Syntax: JavaScript"
+			],
+			[
+				"pa",
+				"Preferences: Browse Packages"
+			],
+			[
+				"the",
+				"UI: Select Theme"
+			],
+			[
+				"pac",
+				"Preferences: Browse Packages"
+			],
+			[
+				"scs",
+				"Set Syntax: CSS"
+			],
+			[
+				"sh",
+				"Set Syntax: HTML"
+			],
+			[
+				"pic",
+				"Color Picker"
+			]
+		],
+		"width": 444.0
+	},
+	"console":
+	{
+		"height": 130.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = '6f4c264a24d933ce70df5dedcf1dcaee' + 'ebe013ee18cced0ef93d5f746d80ef60'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by) ",
+			"man",
+			"help",
+			"packagecontrol"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/Users/jaumesegarra/Documents/Proyectos apps/ranwall",
+		"/Users/jaumesegarra/Documents/Proyectos apps/ranwall/app",
+		"/Users/jaumesegarra/Documents/Proyectos apps/ranwall/app/js",
+		"/Users/jaumesegarra/Documents/Proyectos apps/ranwall/app/scss"
+	],
+	"file_history":
+	[
+		"/Users/jaumesegarra/Documents/Proyectos apps/ranwall/Gruntfile.js",
+		"/Users/jaumesegarra/Documents/Proyectos apps/ranwall/app/js/updater.js",
+		"/Users/jaumesegarra/Downloads/Y177VWSN8DZ0Z_213054-1.pkpass",
+		"/Users/jaumesegarra/Documents/Proyectos apps/ranwall/fix_win.sh",
+		"/Users/jaumesegarra/Documents/Proyectos apps/ranwall/app/updater.html",
+		"/Users/jaumesegarra/Downloads/ej/index.html",
+		"/Users/jaumesegarra/Downloads/ejemplo/build/electron/main.js",
+		"/Users/jaumesegarra/Downloads/ejemplo/readme.md",
+		"/Users/jaumesegarra/Downloads/ejemplo/src/electron/main.js",
+		"/Users/jaumesegarra/Downloads/ejemplo/src/app/app.html",
+		"/Users/jaumesegarra/Downloads/ejemplo/src/app/app.js",
+		"/Users/jaumesegarra/Downloads/ejemplo/src/app/main.js",
+		"/Users/jaumesegarra/Downloads/ejemplo/package.json",
+		"/Users/jaumesegarra/Downloads/ejemplo/gulpfile.js",
+		"/Users/jaumesegarra/Downloads/ejemplo/src/index.html",
+		"/Users/jaumesegarra/Downloads/ejemplo/src/electron/package.json",
+		"/Users/jaumesegarra/Downloads/ejemplo/src/ejemplo.js",
+		"/Users/jaumesegarra/Downloads/ejemplo/src/index.js",
+		"/Users/jaumesegarra/Downloads/el/package.json",
+		"/Users/jaumesegarra/Downloads/el/dev/main.ts",
+		"/Users/jaumesegarra/Downloads/el/dev/polyfills.ts",
+		"/Users/jaumesegarra/Downloads/el/dev/vendor.ts",
+		"/Users/jaumesegarra/Downloads/el/dev/app/app.component.scss",
+		"/Users/jaumesegarra/Downloads/el/dev/app/app.routing.ts",
+		"/Users/jaumesegarra/Downloads/el/dev/app/Settings/settings.component.html",
+		"/Users/jaumesegarra/Downloads/el/dev/app/settings/settings.component.ts",
+		"/Users/jaumesegarra/Downloads/el/dev/app/app.component.html",
+		"/Users/jaumesegarra/Downloads/el/dev/index.html",
+		"/Users/jaumesegarra/Downloads/el/dev/app/app.component.ts",
+		"/Users/jaumesegarra/Downloads/el/ranwall.sublime-project",
+		"/Users/jaumesegarra/Documents/Proyectos apps/generator-es6power/generators/app/templates/_gulpfile.js",
+		"/Users/jaumesegarra/Documents/Proyectos apps/css-framework/gulpfile.js",
+		"/Users/jaumesegarra/Downloads/dssd/gulpfile.js",
+		"/Users/jaumesegarra/Documents/Proyectos apps/ranwall/package.json",
+		"/Users/jaumesegarra/Documents/Proyectos apps/ranwall/README.md",
+		"/Users/jaumesegarra/Documents/Proyectos apps/ranwall/app/scss/app.scss",
+		"/Users/jaumesegarra/Documents/Proyectos apps/ranwall/app/css/_vendor/linearicons/style.css",
+		"/Users/jaumesegarra/Documents/Proyectos apps/css-framework/test/index.html",
+		"/Users/jaumesegarra/Documents/Proyectos apps/css-framework/bower.json",
+		"/Users/jaumesegarra/Documents/Proyectos apps/css-framework/package.json",
+		"/Users/jaumesegarra/Downloads/if_android-bot-round-mag-ghost-virus-light_648077.svg",
+		"/Users/jaumesegarra/Documents/Proyectos apps/css-framework/scss/main.scss",
+		"/Users/jaumesegarra/Documents/Clase/ECliente/buscaminas/js/main.js",
+		"/Users/jaumesegarra/Documents/Clase/ECliente/buscaminas-js/src/js/app.js",
+		"/Users/jaumesegarra/Documents/Clase/ECliente/buscaminas-js/src/js/game.js",
+		"/Users/jaumesegarra/Documents/Clase/ECliente/buscaminas-js/src/js/clasificacion.js",
+		"/Users/jaumesegarra/Documents/Proyectos apps/generator-es6power/README.md",
+		"/Users/jaumesegarra/Documents/Proyectos apps/ranwall/app/js/wall.js",
+		"/Users/jaumesegarra/Documents/Proyectos apps/ranwall/app/index.html",
+		"/Users/jaumesegarra/Documents/Proyectos apps/ranwall/app/config.html",
+		"/Users/jaumesegarra/Documents/Proyectos apps/ranwall/app/js/win.js",
+		"/Users/jaumesegarra/Documents/Proyectos apps/ranwall/app/js/app.js",
+		"/Users/jaumesegarra/Documents/Proyectos apps/ranwall/changes.txt",
+		"/Users/jaumesegarra/Downloads/ss.txt",
+		"/Users/jaumesegarra/Documents/Proyectos apps/ranwall/app/partials/header.html",
+		"/Users/jaumesegarra/Documents/Proyectos apps/ranwall/app/scss/_fonts.scss",
+		"/Users/jaumesegarra/Downloads/untitled.js",
+		"/Users/jaumesegarra/Downloads/ds.html",
+		"/Users/jaumesegarra/Documents/Proyectos apps/ranwall/bower.json",
+		"/Users/jaumesegarra/Documents/Proyectos apps/ranwall/app/font-awesome/font-awesome.scss",
+		"/Users/jaumesegarra/Documents/Proyectos apps/ranwall/node_modules/wallpaper/lib/win.js",
+		"/Users/jaumesegarra/Documents/Proyectos apps/ranwall/node_modules/wallpaper/package.json",
+		"/Users/jaumesegarra/Documents/Proyectos apps/ranwall/app/js/appConfig.js",
+		"/Users/jaumesegarra/Documents/Proyectos apps/on my wall/nw/scripts/controllers.js",
+		"/Users/jaumesegarra/Documents/Proyectos apps/on my wall/nw/scripts/controllersConfig.js",
+		"/Users/jaumesegarra/Documents/Proyectos apps/on my wall/nw/config.html",
+		"/Users/jaumesegarra/Documents/Proyectos apps/on my wall/nw/scripts/services.js",
+		"/Users/jaumesegarra/Documents/Proyectos apps/on my wall/nw/scripts/app.js",
+		"/usr/local/lib/node_modules/generator-es6power/generators/app/templates/_src/_js/_game.js",
+		"/usr/local/lib/node_modules/generator-es6power/generators/app/templates/_src/_js/_app.js",
+		"/usr/local/lib/node_modules/generator-es6power/generators/app/templates/_package.json",
+		"/usr/local/lib/node_modules/generator-es6power/generators/app/index.js",
+		"/usr/local/lib/node_modules/generator-es6power/generators/app/templates/_.babelrc",
+		"/Users/jaumesegarra/Documents/Clase/ECliente/ahorcado_clase/gulp.app/Contents/Resources/app.nw/get-gulp-tasks.js",
+		"/Users/jaumesegarra/Documents/Clase/ECliente/ahorcado_clase/gulp.app/Contents/Resources/app.nw/main.js",
+		"/Users/jaumesegarra/Documents/Clase/ECliente/ahorcado_clase/gulp.app/Contents/Resources/app.nw/index.html",
+		"/usr/local/lib/node_modules/generator-es6power/package.json",
+		"/Users/jaumesegarra/Documents/Proyectos apps/generator-es6power/package.json",
+		"/Users/jaumesegarra/Downloads/lds/src/js/app.js",
+		"/Users/jaumesegarra/Downloads/lds/package.json",
+		"/Users/jaumesegarra/Downloads/Example/src/js/modal.js",
+		"/usr/local/lib/node_modules/generator-es6power/generators/app/templates/_gulpfile.js",
+		"/usr/local/lib/node_modules/generator-nww/generators/app/index.js",
+		"/Users/jaumesegarra/Downloads/Example/src/js/pantalla.js",
+		"/Users/jaumesegarra/Downloads/Example/src/js/game.js",
+		"/Users/jaumesegarra/Downloads/Example/src/js/app.js",
+		"/Users/jaumesegarra/Documents/Clase/ECliente/ahorcado_clase/js/main.js",
+		"/Users/jaumesegarra/Downloads/Example/src/js/menu.js",
+		"/Users/jaumesegarra/Downloads/Example/src/js/modalImplements.js",
+		"/Users/jaumesegarra/Downloads/Example/src/templates/index.html",
+		"/Users/jaumesegarra/Documents/Clase/ECliente/ahorcado_clase/index.html",
+		"/Users/jaumesegarra/Downloads/Example/build/index.html",
+		"/Users/jaumesegarra/Downloads/Example/src/scss/main.scss",
+		"/Users/jaumesegarra/Downloads/Example/build/css/main.css",
+		"/Users/jaumesegarra/Documents/Proyectos apps/generator-nww/package.json",
+		"/usr/local/lib/node_modules/generator-nww/generators/app/templates/_package.json",
+		"/usr/local/lib/node_modules/generator-es6power/generators/app/templates/_src/_templates/_index.html",
+		"/usr/local/lib/node_modules/generator-es6power/generators/app/templates/_src/_scss/_main.scss",
+		"/Users/jaumesegarra/Documents/Clase/ECliente/AhorcadoJS/gulpfile.js",
+		"/Users/jaumesegarra/Downloads/Example/package.json",
+		"/Users/jaumesegarra/Documents/Clase/ECliente/AhorcadoJS/package.json",
+		"/Users/jaumesegarra/Documents/Clase/ECliente/buscaminas/readme.md",
+		"/Users/jaumesegarra/Documents/Clase/ECliente/buscaminas/scss/main.scss",
+		"/Users/jaumesegarra/Documents/Clase/ECliente/buscaminas/index.html",
+		"/Users/jaumesegarra/Documents/Clase/ECliente/buscaminas/css/main.css",
+		"/Users/jaumesegarra/Downloads/dffd/hola-angular2/src/app/nw.ts",
+		"/Users/jaumesegarra/Downloads/dffd/hola-angular2/src/tsconfig.json",
+		"/Users/jaumesegarra/Downloads/dffd/hola-angular2/src/environments/environment.prod.ts",
+		"/Users/jaumesegarra/Downloads/dffd/hola-angular2/src/environments/environment.ts",
+		"/Users/jaumesegarra/Downloads/dffd/hola-angular2/src/index.html",
+		"/Users/jaumesegarra/Library/Application Support/Sublime Text 3/Packages/Package Control.sublime-package",
+		"/Users/jaumesegarra/Downloads/ddd/src/sample.component.ts",
+		"/Users/jaumesegarra/Downloads/ddd/src/index.ts",
+		"/Users/jaumesegarra/Downloads/ddd/playground/index.ts",
+		"/Users/jaumesegarra/Downloads/dsd/Gruntfile.js",
+		"/Users/jaumesegarra/Documents/Proyectos apps/on my wall/nw/package.json",
+		"/Users/jaumesegarra/Documents/Proyectos apps/ahorcado_clase/index.html",
+		"/Users/jaumesegarra/Documents/Proyectos apps/ahorcado_clase/Gruntfile.js",
+		"/Users/jaumesegarra/Downloads/it-2017-spanish-1160320/IT 2017 NEW HD-TS 60FPS x264 HQ-CPG.srt",
+		"/Users/jaumesegarra/Downloads/ssd/source/main.js",
+		"/Users/jaumesegarra/Downloads/ssd/source/js/app.js",
+		"/Users/jaumesegarra/Downloads/ssd/source/index.html",
+		"/Users/jaumesegarra/Downloads/ssd/gulpfile.js",
+		"/Users/jaumesegarra/Downloads/ssd/package.json",
+		"/Users/jaumesegarra/Downloads/ssd/source/package.json",
+		"/Users/jaumesegarra/Downloads/ranwall/gulpFile.js",
+		"/Users/jaumesegarra/Downloads/ranwall/package.json",
+		"/Users/jaumesegarra/Downloads/ranwall/app/index.html"
+	],
+	"find":
+	{
+		"height": 40.0
+	},
+	"find_in_files":
+	{
+		"height": 102.0,
+		"where_history":
+		[
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"_SRWshortcut_key"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 4,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "app/js/app.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2224,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1606,
+								1606
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "app/js/updateController.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 995,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								452,
+								452
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 10,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "app/js/updater.js",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 1894,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								608,
+								696
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 53.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 9,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "app/js/configController.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4830,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1442,
+								1442
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 191.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "app/config.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3407,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2135,
+								2135
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 284.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "app/scss/app.scss",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4122,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2391,
+								2391
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CSS/CSS.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 2269.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "app/index.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1412,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1261,
+								1261
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "app/js/mainController.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1691,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								959,
+								959
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "app/js/wall.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 6015,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4360,
+								4360
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1485.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "app/js/win.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4244,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3327,
+								3327
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
+						},
+						"translation.x": 2.0,
+						"translation.y": 1780.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 8,
+					"type": "text"
+				},
+				{
+					"buffer": 10,
+					"file": "package.json",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1458,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								818,
+								818
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JSON.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 23.0
+	},
+	"input":
+	{
+		"height": 36.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.doc":
+	{
+		"height": 0.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "ranwall.sublime-project",
+	"replace":
+	{
+		"height": 42.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 218.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

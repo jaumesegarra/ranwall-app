@@ -1,6 +1,2 @@
-##Changes in v. 0.4.0
-- Now you can change the wallpaper with a command! (Cmd+Shift+W on MacOS, Win+Shift+W on Windows): This requires the application to be open
-- Possibility to "save as" the wallpaper
-- Configuration window changes
-- Tray icon
-- Launch at Startup option
+##Changes in v. 0.5.0
+- Please update to new version (Updater obsolete)

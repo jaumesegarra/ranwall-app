@@ -1,9 +1,9 @@
 {
-	"version": "0.4.1",
-	"changes": "##Changes in v. 0.4.1 \r\n - Pull to refresh wallpaper now works! \r\n - Minor UI changes as icons font\r\n - Unsplash.it provider renamed\r\n - Minor changes on update system\r\n - Solved problem that occurred when the wallpaper didn't load",
+	"version": "0.5.0",
+	"changes": "##Changes in v. 0.5.0 \r\n - Now you can configure the shortcut key \r\n - More faster than ever! \r\n - Now you can exclude some wallpaper provider \r\n - Some bug fixes \r\n - Updated node-webkit version (0.26.1)",
 	"download_url": {
-		"win32": "https://github.com/jaumesegarra/ranwall-app/releases/download/0.4.1/ranwall-setup32.exe",
-		"win64": "https://github.com/jaumesegarra/ranwall-app/releases/download/0.4.1/ranwall-setup64.exe",
-		"mac": "https://github.com/jaumesegarra/ranwall-app/releases/download/0.4.1/ranwall.app.zip"
+		"win32": "https://github.com/jaumesegarra/ranwall-app/releases/download/0.5.0/ranwall-setup32.exe",
+		"win64": "https://github.com/jaumesegarra/ranwall-app/releases/download/0.5.0/ranwall-setup64.exe",
+		"mac": "https://github.com/jaumesegarra/ranwall-app/releases/download/0.5.0/ranwall.app.zip"
 	}
 }
