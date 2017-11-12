@@ -49,7 +49,6 @@ function loadWallpaper(){
 	wall.src = "img/walls/"+rand+".jpg";
 
 	wall.addEventListener("load", function(){
-		$(".waller").css('background-image', 'url('+wall.src+')');
 		wallLoading(false);
 	},false);
 
