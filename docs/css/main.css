@@ -19,6 +19,41 @@ body:not(.no-fixed-waller) header .center {
 
 #app-template{
 	margin-top: 15px;
+	position: relative;
+}
+
+#app-template.loading > .load-background{
+	display: block;
+}
+
+#app-template > .load-background{
+	display: none;
+	width: calc(100% - 10px);
+	background-color: #777;
+	position: absolute;
+	margin: 20px 5px;
+	height: calc(100% - 40px);
+	z-index: -10;
+	
+}
+
+#app-template > .load-background:before{
+	width: 100%;
+	height: 100%;
+	content: ' ';
+	background-color: #30383c;
+	animation: fadein 1s infinite linear;
+	animation-delay: 0.2s;
+	display: block;
+}
+
+@keyframes fadein {
+	from {
+		opacity:0.2;
+	}
+	to {
+		opacity:0.8;
+	}
 }
 
 #app-template > img{
@@ -85,6 +120,15 @@ body.no-fixed-waller content section:first-child{
 
 	content{
 		margin-top: 0px
+	}
+
+	#app-template{
+		z-index: 10;
+	}
+
+	#app-template > .load-background{
+		margin: 0 20px;
+		width: calc(100% - 40px);
 	}
 
 	#app-template > img{
