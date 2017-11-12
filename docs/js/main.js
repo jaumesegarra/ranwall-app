@@ -26,3 +26,21 @@ $("a[href^='#']").on("click", function(e){
 
 	$('html, body').animate({ scrollTop: scrollPos }, 'slow');
 });
+
+var walls_urls = ["142","242","450", "472", "562", "588", "829"];
+
+function loadWallpaper(){
+	
+	var wall = new Image();
+	var rand = walls_urls[Math.floor(Math.random() * walls_urls.length)];
+
+	wall.src = "img/walls/"+rand+".jpg";
+
+	wall.addEventListener("load", function(){
+		$(".waller").css('background-image', 'url('+wall.src+')');
+	},false);
+
+	wall.addEventListener("error", function(){
+		loadWallpaper();
+	}, false)
+}
