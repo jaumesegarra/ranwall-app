@@ -18,7 +18,7 @@ body:not(.no-fixed-waller) header .center {
 }
 
 #app-template{
-	margin-top: 15px;
+	margin-top: 10px;
 	position: relative;
 }
 
@@ -123,6 +123,7 @@ body.no-fixed-waller content section:first-child{
 	}
 
 	#app-template{
+		margin-top: 0px;
 		z-index: 10;
 	}
 
