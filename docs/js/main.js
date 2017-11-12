@@ -30,7 +30,7 @@ $("a[href^='#']").on("click", function(e){
 var walls_urls = ["142","242","450", "472", "562", "588", "829"];
 
 function loadWallpaper(){
-	
+
 	var wall = new Image();
 	var rand = walls_urls[Math.floor(Math.random() * walls_urls.length)];
 
@@ -44,3 +44,5 @@ function loadWallpaper(){
 		loadWallpaper();
 	}, false)
 }
+
+loadWallpaper();
