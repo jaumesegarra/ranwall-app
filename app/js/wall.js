@@ -40,6 +40,18 @@
         }
       },
       _autoSet: false,
+      _errorImgLoading(){
+        var wall_preview = angular.element(document.querySelector("#random-wallpaper-active"));
+        wall_preview.removeAttribute("src");
+        wall_preview.style.display = 'none';
+
+        wall_preview.removeClass('loading');
+        wall_preview.addClass('error');
+
+        setTimeout(function(){
+          obj.new();
+        },10000);
+      },
       prepareElement(){
         WebPullToRefresh.init({
           loadingFunction: function (){ 
@@ -52,22 +64,10 @@
 
         var wall_preview = angular.element(document.querySelector("#random-wallpaper-active"));
         var ranImg = document.querySelector("#random-wallpaper-active > img");
-        ranImg.addEventListener("error", evErrorIMG, false);
+        ranImg.addEventListener("error", obj._errorImgLoading, false);
         ranImg.addEventListener("load", evLoadIMG, false);
 
         ranImg.ondragstart = function() { return false; };
-
-        function evErrorIMG(){
-          this.removeAttribute("src");
-          this.style.display = 'none';
-
-          wall_preview.removeClass('loading');
-          wall_preview.addClass('error');
-
-          setTimeout(function(){
-            obj.new();
-          },10000);
-        }
 
         function evLoadIMG(){
           this.style.display = 'block';
@@ -106,13 +106,6 @@
 
             var resolution = ($localStorageService.get('user_resolution') == undefined) ? _USER_RESOLUTION : JSON.parse("["+$localStorageService.get('user_resolution')+"]");
 
-            /*var resizeTransform = NW.sharp().resize(resolution[0], resolution[1]).toFile(output, function(err) {
-              obj.refresh_preview();
-
-              if(loading_notification)
-                loading_notification.close();
-            });*/
-
             function getRandomProvider() {
               var wproviders = [];
 
@@ -121,19 +114,28 @@
               else
                 wproviders = JSON.parse(localStorage.getItem('ls.wall_providers'));
 
-              var wNumber = wproviders[Math.floor(Math.random() * wproviders.length)];
+              function get (wproviders){
+                var number = wproviders[Math.floor(Math.random() * wproviders.length)];
+
+                if(_WALLPAPER_PROVIDERS[number] !== undefined)
+                  return number;
+                else{
+                  if(wproviders.length > 1){
+                    return get(wproviders);
+                  }else return get(obj.getAllProviders());
+                }
+              }
+
+              var wNumber = get(wproviders);
 
               return _WALLPAPER_PROVIDERS[wNumber];
+
             }
 
             var provider = getRandomProvider();
-            
-            var url = provider.url.replace("{x}",resolution[0]).replace("{y}",resolution[1]);
 
             function createImage(response) {
               var file = NW.fs.createWriteStream(output);
-
-              //response.pipe(resizeTransform); or:
 
               response.pipe(file);
 
@@ -145,36 +147,57 @@
                   loading_notification.close();
               });
 
+              response.on('error', function(err) {
+                console.error(err);
+                obj._errorImgLoading();
+              });
             }
 
-            var request = NW.https.get(url, function(response) {
-              switch (provider.get.type) {
-                case "json":
-                var data = '';
+            var url = provider.url(resolution);
+            if(url instanceof Promise){
+              url.then(function(url_data){
+                load_url(url_data);
+              });
+            }else {
+              load_url(url);
+            }
 
-                response.on('data', function (chunk){
-                  data += chunk;
-                });
+            function load_url(url) {
+              NW.https.get(url, function(response) {
+                switch (provider.get.type) {
+                  case "json":
+                  var data = '';
 
-                response.on('end', function(){
-                  var data_res = JSON.parse(data).response;
-                  var url_img = provider.get.img_path(data_res);
-
-                  var nwhtt = NW.http;
-                  if(url_img.indexOf("https://") != -1)
-                    nwhtt = NW.https;
-
-                  nwhtt.get(url_img, function(r) {
-                    createImage(r);
+                  response.on('data', function (chunk){
+                    data += chunk;
                   });
-                });
 
-                break;
-                default:
-                createImage(response);
-                break;
-              }
-            });
+                  response.on('end', function(){
+                    var data_res = JSON.parse(data).response;
+                    var url_img = provider.get.img_path(data_res);
+
+                    var nwhtt = NW.http;
+                    if(url_img.indexOf("https://") != -1)
+                      nwhtt = NW.https;
+
+                    nwhtt.get(url_img, function(r) {
+                      createImage(r);
+                    });
+                  });
+
+                  response.on('error', function(err) {
+                    console.error(err);
+                    obj._errorImgLoading();
+                  });
+
+                  break;
+                  default:
+                  createImage(response);
+                  break;
+                }
+              });
+            }
+
           }
         }
       },

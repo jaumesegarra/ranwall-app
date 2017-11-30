@@ -5,24 +5,35 @@ angular.module('app', ['angularRandomString', 'LocalStorageModule'])
 .constant('WALLPAPER_PROVIDERS', [
 {
 	'name': 'picsum.photos',
-	'url': 'https://picsum.photos/{x}/{y}/?random',
+	'url': function(resolution) { 
+		var _url = 'https://picsum.photos/{x}/{y}/?random';
+
+		return _url.replace("{x}",resolution[0]).replace("{y}",resolution[1]); 
+	},
 	'get': {
 		'type': 'image'
 	}
 },
-/*{
-	'name': 'desktoppr.co',
-	'url': 'https://api.desktoppr.co/1/wallpapers/random',
-	'get': {
-		'type': 'json',
-		'img_path': function(res){
-			return res.image.url;
-		}
-	}
-},*/
 {
 	'name': 'unsplash.com',
-	'url': 'https://source.unsplash.com/random/{x}x{y}',
+	'url': function(resolution) { 
+		var _url = 'https://source.unsplash.com/random/{x}x{y}'; 
+
+		return _url.replace("{x}",resolution[0]).replace("{y}",resolution[1]); 
+	},
+	'get': {
+		'type': 'image'
+	}
+},
+{
+	'name': 'wallpaperup.com',
+	'url': function(resolution) { 
+		return new Promise(function(resolve, reject){
+			require('ranwallpaperup').random(resolution[0], resolution[1]).then(function (data) {
+				resolve(data.url);
+			});
+		});
+	},
 	'get': {
 		'type': 'image'
 	}
@@ -41,7 +52,8 @@ angular.module('app', ['angularRandomString', 'LocalStorageModule'])
 		http: require('follow-redirects').http,
 		https: require('follow-redirects').https,
 		autoLaunch: require('auto-launch'),
-		dialog: require('nw-dialog')
+		dialog: require('nw-dialog'),
+		rwallpaperup: require('ranwallpaperup')
 	};
 
 	return {
@@ -53,7 +65,8 @@ angular.module('app', ['angularRandomString', 'LocalStorageModule'])
 		http: requires.http,
 		https: requires.https,
 		autoLaunch: requires.autoLaunch,
-		dialog: requires.dialog
+		dialog: requires.dialog,
+		rwallpaperup: requires.rwallpaperup
 	}
 })())
 .config(['NW', 'PLATFORM', 'localStorageServiceProvider', function(NW, _PLATFORM, localStorageServiceProvider){
@@ -65,6 +78,7 @@ angular.module('app', ['angularRandomString', 'LocalStorageModule'])
 		menu.createMacBuiltin && menu.createMacBuiltin("ranwall");
 		NW.gui.Window.get().menu = menu;
 	}
+
 }]).run(['MAGIC_SHORTCUT', function(_MAGIC_SHORTCUT){
 
 	document.body.addEventListener('dragover', function(e){

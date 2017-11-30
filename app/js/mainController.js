@@ -2,10 +2,37 @@
 
 angular.module('app')
 .controller('mainController',['$scope', 'wall', 'localStorageService', 'NW', 'ConfigWindow', 'PLATFORM', 'win', 'updater', 'MAGIC_SHORTCUT', 'WALLPAPER_NAME', function($scope, $wall, $localStorageService, NW, _ConfigWindow, PLATFORM, $win, $updater, _MAGIC_SHORTCUT, _WALLPAPER_NAME) {
+	
 	$wall.prepareElement();
 
 	function setNewWallpaper() {
 		$wall.new(true, true);
+	}
+
+	function openConfig() {
+		if(_ConfigWindow == null){
+
+			NW.gui.Window.open('app/config.html', {
+				position: 'center',
+				width: 485,
+				height: 310,
+				resizable:false
+			},
+			function(win){    
+				_ConfigWindow = win;
+
+				win.on('closed', function() {
+					_ConfigWindow = null;
+
+					if (PLATFORM == "mac") {
+						var menu = new NW.gui.Menu({type: "menubar"});
+						menu.createMacBuiltin && menu.createMacBuiltin("ranwall");
+						NW.gui.Window.get().menu = menu;
+					}
+				});
+			});
+
+		}else _ConfigWindow.focus();
 	}
 
 	var menu = [
@@ -24,6 +51,12 @@ angular.module('app')
 		"name":"Show/Hide",
 		"click": function(){
 			$win.toggleShow();
+		}
+	},
+	{
+		"name":"Configuration",
+		"click": function(){
+			openConfig();
 		}
 	},
 	{
@@ -52,29 +85,5 @@ angular.module('app')
 		$wall.saveas();
 	}
 
-	$scope.openConfig = function () {
-		if(_ConfigWindow == null){
-
-			NW.gui.Window.open('app/config.html', {
-				position: 'center',
-				width: 485,
-				height: 310,
-				resizable:false
-			},
-			function(win){    
-				_ConfigWindow = win;
-
-				win.on('closed', function() {
-					_ConfigWindow = null;
-
-					if (PLATFORM == "mac") {
-						var menu = new NW.gui.Menu({type: "menubar"});
-						menu.createMacBuiltin && menu.createMacBuiltin("ranwall");
-						NW.gui.Window.get().menu = menu;
-					}
-				});
-			});
-
-		}else _ConfigWindow.focus();
-	}
+	$scope.openConfig = openConfig;
 }])

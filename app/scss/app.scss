@@ -167,6 +167,7 @@ $border_radius_wall: 10px;
 	background-color: #fff;
 	text-align: center;
 	padding: 5px 0;
+	overflow: hidden;
 
 	select{
 		font-size: 14px;
@@ -180,8 +181,8 @@ $border_radius_wall: 10px;
 	}
 
 	select[multiple]{
-		height: 100%;
-		max-height: 200px;
+		height: auto;
+		overflow: hidden;
 
 		& > option{
 			padding: 9px;
