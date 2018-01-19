@@ -1,8 +1,14 @@
 'use strict';
 
 angular.module('app')
-.controller('configController',['$scope', 'wall', 'win', 'localStorageService', 'USER_RESOLUTION', 'WALLPAPER_PROVIDERS', 'MAGIC_SHORTCUT', function($scope, $wall, $win, $localStorageService, _USER_RESOLUTION, _WALLPAPER_PROVIDERS, _MAGIC_SHORTCUT) {
+.controller('configController',['$scope', 'wall', 'win', 'localStorageService', 'USER_RESOLUTION', 'WALLPAPER_PROVIDERS', 'MAGIC_SHORTCUT', 'UserConfig', function($scope, $wall, $win, $localStorageService, _USER_RESOLUTION, _WALLPAPER_PROVIDERS, _MAGIC_SHORTCUT, UserConfig) {
 	$win._checkIfShowAtLaunch();
+	
+	function initConfigVariables(){
+		$scope.forceResize = UserConfig.ForceResize();
+	}
+
+	initConfigVariables();
 	
 	$scope.launchAtStartup= ($localStorageService.get("configLaunchAtStartup") == undefined || $localStorageService.get("configLaunchAtStartup") == 0) ? false : true;
 	$scope.$watch('launchAtStartup', function() {
@@ -79,6 +85,15 @@ angular.module('app')
 			break;
 		}
 	};
+
+	$scope.wallPreview = ($localStorageService.get("configPreview"));
+	$scope.$watch('wallPreview', function() {
+		$localStorageService.set('configPreview', ($scope.wallPreview))
+	});
+	
+	$scope.$watch('forceResize', function() {
+		$localStorageService.set('ForceResize', ($scope.forceResize))
+	});
 
 	$scope.magicShortcut = _MAGIC_SHORTCUT.modifiers+"+"+_MAGIC_SHORTCUT.key;
 
@@ -170,5 +185,7 @@ angular.module('app')
 	$scope.deleteCache = function () {
 		$wall._purgeWallpapersFolder();
 		$localStorageService.clearAll();
+		
+		initConfigVariables();
 	}
 }])

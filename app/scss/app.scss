@@ -18,6 +18,7 @@ body {
 }
 
 header{
+	position: relative;
 
 	h1 {
 		margin: 0px 0px 20px 0px;
@@ -31,8 +32,45 @@ header{
 		margin-left: 10px;
 		margin-top: 12px
 	}
+
+	div.message{
+
+		position: absolute;
+		z-index: 101;
+		text-align: center;
+		top: -5px;
+		width: 100%;
+
+		transform: translateY(-50px);
+		animation: slideDown 5.5s 1.0s 1 ease forwards;
+
+		& > div{
+			background-color: #095dbb;
+			border-radius: 12px;
+			color: #fff;
+			font-size: 12px;
+			padding: 6px 15px;
+			display: inline-block;
+		}
+
+		&:hover > div{
+			opacity:0.98;
+		}
+
+		&.error > div{
+			background-color: #ca1111;
+		}
+	}
 }
 
+@-webkit-keyframes slideDown {
+	0%, 100% { -webkit-transform: translateY(-50px); }
+	10%, 90% { -webkit-transform: translateY(0px); }
+}
+@-moz-keyframes slideDown {
+	0%, 100% { -moz-transform: translateY(-50px); }
+	10%, 90% { -moz-transform: translateY(0px); }
+}
 
 button, .button, input[type="button"] {
 	border: 0px;
@@ -92,6 +130,8 @@ $border_radius_wall: 10px;
 	background-color: #9c9898;
 	border-radius: $border_radius_wall;
 	margin-bottom: 15px;
+	position: relative;
+	overflow: hidden;
 
 	img{
 		display:none;
@@ -99,6 +139,12 @@ $border_radius_wall: 10px;
 		height:auto;
 		display:block;
 		border-radius: $border_radius_wall;
+
+		&.preview:hover{
+			filter: blur(10px);
+			transition: filter 250ms linear;
+			transform: scale(1.05);
+		}
 	}
 
 	.on-error{
@@ -127,6 +173,10 @@ $border_radius_wall: 10px;
 	}
 
 	&.error{
+		img{
+			display: none;
+		}
+		
 		.on-error{
 			display: block;
 		}
@@ -136,16 +186,35 @@ $border_radius_wall: 10px;
 		}
 	}
 
+	&:hover:not(.loading) .foot-buttons > .info{
+		opacity:0.75;
+	}
+
 	.foot-buttons {
-		float: right;
-		position: relative;
-		top: -34px;
-		right: 10px;
-		margin-top: -2%;
-		margin-right: 2%;
+		position: absolute;
+		bottom: 20px;
+		left: 20px;
+		right: 20px;
+		display: flex;
+		align-items: baseline;
+
+		.info{
+			margin-right: auto;
+
+			opacity:0;
+			transition: opacity 0.4s ease-in-out;
+
+			span{
+				font-size: 12px;
+				color: #000;
+				padding: 5px 10px;
+				border-radius: 20px;
+				background: rgba(255,255,255,0.6);
+			}
+		}
 
 		button {
-			margin-left: 2px;
+			margin-left: 6px;
 			border: 1px dotted #4e88c5;
 		}
 	}

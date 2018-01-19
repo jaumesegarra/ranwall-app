@@ -1,9 +1,9 @@
 {
-	"version": "0.6.0",
-	"changes": "##Changes in v. 0.6.0 \r\n - New provider WallpaperUp! \r\n - Add configuration option in tray menu \r\n - Bug fixes, always.",
+	"version": "0.7.0",
+	"changes": "##Changes in v. 0.7.0 \r\n - New provider desktoppr.co! \r\n - Wallpaper preview (beta)\r\n - Force resize wallpaper option. \r\n - Wallpaper info on hover",
 	"download_url": {
-		"win32": "https://github.com/jaumesegarra/ranwall-app/releases/download/0.6.0/ranwall-setup32.exe",
-		"win64": "https://github.com/jaumesegarra/ranwall-app/releases/download/0.6.0/ranwall-setup64.exe",
-		"mac": "https://github.com/jaumesegarra/ranwall-app/releases/download/0.6.0/ranwall.app.zip"
+		"win32": "https://github.com/jaumesegarra/ranwall-app/releases/download/0.7.0/ranwall-setup32.exe",
+		"win64": "https://github.com/jaumesegarra/ranwall-app/releases/download/0.7.0/ranwall-setup64.exe",
+		"mac": "https://github.com/jaumesegarra/ranwall-app/releases/download/0.7.0/ranwall.app.zip"
 	}
 }

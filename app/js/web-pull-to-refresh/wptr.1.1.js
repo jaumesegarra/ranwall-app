@@ -15,6 +15,8 @@ var WebPullToRefresh = (function () {
 		// Number of pixels of panning until refresh 
 		distanceToRefresh: 40, 
 
+		startFunction: false,
+
 		// Pointer to function that does the loading and returns a promise
 		loadingFunction: false,
 
@@ -54,6 +56,7 @@ var WebPullToRefresh = (function () {
 	 		contentEl: params.contentEl || document.querySelector( defaults.contentEl ),
 	 		ptrEl: params.ptrEl || document.getElementById( defaults.ptrEl ),
 	 		distanceToRefresh: params.distanceToRefresh || defaults.distanceToRefresh,
+	 		startFunction: params.startFunction || defaults.startFunction,
 	 		loadingFunction: params.loadingFunction || defaults.loadingFunction,
 	 		resistance: params.resistance || defaults.resistance
 	 	};
@@ -78,6 +81,9 @@ var WebPullToRefresh = (function () {
 	 * @param {object} e - Event object
 	 */
 	 var _panStart = function(e) {
+	 	if(options.startFunction)
+	 		options.startFunction();
+
 	 	pan.startingPositionY = document.body.scrollTop;
 
 	 	if ( pan.startingPositionY === 0 ) {

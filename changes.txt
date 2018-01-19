@@ -1,2 +1,2 @@
-##Changes in v. 0.6.0
+##Changes in v...
 - Please update to new version (Updater obsolete)

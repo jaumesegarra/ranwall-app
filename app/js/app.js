@@ -37,11 +37,29 @@ angular.module('app', ['angularRandomString', 'LocalStorageModule'])
 	'get': {
 		'type': 'image'
 	}
+},
+{
+	'name': 'desktoppr.co *',
+	'url': function(resolution) { 
+		var _url = 'https://api.desktoppr.co/1/wallpapers/random'; 
+
+		return _url; 
+	},
+	'get': {
+		'type': 'json',
+		'img_path': function(res){
+			return res.image.url
+		}
+	}
 }])
 .constant('PLATFORM', (process.platform == "darwin") ? 'mac' : ((process.platform == "win32" && process.arch == "x64") ? 'win64' : 'win32'))
 .constant('WALLPAPERS_FOLDER', (process.env[(process.platform == 'win32') ? 'USERPROFILE' : 'HOME'])+"/.ranwall")
-.value('WALLPAPER_NAME', '')
 .value('ConfigWindow', null)
+.value('UserConfig', {
+	'ForceResize': function(){
+		return (localStorage.getItem('ls.ForceResize') == undefined || localStorage.getItem('ls.ForceResize') == 'true');
+	}
+})
 .value('MAGIC_SHORTCUT', { 'modifiers': 'Command+Shift', 'key':'W'})
 .constant('NW', (function(){
 	var requires = {
@@ -53,7 +71,8 @@ angular.module('app', ['angularRandomString', 'LocalStorageModule'])
 		https: require('follow-redirects').https,
 		autoLaunch: require('auto-launch'),
 		dialog: require('nw-dialog'),
-		rwallpaperup: require('ranwallpaperup')
+		rwallpaperup: require('ranwallpaperup'),
+		jimp: require('jimp')
 	};
 
 	return {
@@ -66,7 +85,8 @@ angular.module('app', ['angularRandomString', 'LocalStorageModule'])
 		https: requires.https,
 		autoLaunch: requires.autoLaunch,
 		dialog: requires.dialog,
-		rwallpaperup: requires.rwallpaperup
+		rwallpaperup: requires.rwallpaperup,
+		jimp: requires.jimp
 	}
 })())
 .config(['NW', 'PLATFORM', 'localStorageServiceProvider', function(NW, _PLATFORM, localStorageServiceProvider){
@@ -95,4 +115,7 @@ angular.module('app', ['angularRandomString', 'LocalStorageModule'])
 		_MAGIC_SHORTCUT.key = shortcut.key;
 		_MAGIC_SHORTCUT.modifiers = shortcut.modifiers;
 	}
+
+	var wall_preview = angular.element(document.querySelector("#random-wallpaper-active"));
+	wall_preview.removeClass('loading');
 }]);

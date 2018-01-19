@@ -1,11 +1,11 @@
 'use strict';
 
 angular.module('app')
-.controller('mainController',['$scope', 'wall', 'localStorageService', 'NW', 'ConfigWindow', 'PLATFORM', 'win', 'updater', 'MAGIC_SHORTCUT', 'WALLPAPER_NAME', function($scope, $wall, $localStorageService, NW, _ConfigWindow, PLATFORM, $win, $updater, _MAGIC_SHORTCUT, _WALLPAPER_NAME) {
+.controller('mainController',['$scope', 'wall', 'localStorageService', 'NW', 'ConfigWindow', 'PLATFORM', 'win', 'updater', 'MAGIC_SHORTCUT', 'previewer', function($scope, $wall, $localStorageService, NW, _ConfigWindow, PLATFORM, $win, $updater, _MAGIC_SHORTCUT, $previewer) {
 	
 	$wall.prepareElement();
 
-	function setNewWallpaper() {
+	function setNewWallpaperAuto() {
 		$wall.new(true, true);
 	}
 
@@ -41,7 +41,7 @@ angular.module('app')
 		"key": _MAGIC_SHORTCUT.key, 
 		"modifiers": _MAGIC_SHORTCUT.modifiers,
 		"click": function(){
-			setNewWallpaper();
+			setNewWallpaperAuto();
 		}
 	},
 	{
@@ -74,12 +74,56 @@ angular.module('app')
 	];
 
 	$win.atLaunch(menu);
-	$win.command(_MAGIC_SHORTCUT.modifiers+"+"+_MAGIC_SHORTCUT.key, setNewWallpaper);
+	$win.command(_MAGIC_SHORTCUT.modifiers+"+"+_MAGIC_SHORTCUT.key, setNewWallpaperAuto);
 	$updater.checkUpdate();
 
 	$wall.new();
 
+	var wallPreview = null;
+
+	$scope.current_wallpaper = $wall.current_wallpaper;
+
+	function allowRefresh(){
+		$scope.previewup = $previewer.up;
+		$scope.previewdown = $previewer.down;
+	}
+
+	function disableRefresh(){
+		$scope.previewup = null;
+		$scope.previewdown = null;
+	}
+
+	WebPullToRefresh.init({
+		startFunction: function (){
+			disableRefresh();
+
+			document.querySelectorAll("header > .message").forEach(e => e.parentNode.removeChild(e));
+		},
+		loadingFunction: function (){
+			return new Promise( function( resolve, reject ) { 
+				resolve();
+				$wall.new();
+				checkPreview();
+			})
+		}
+	});
+
+	$scope.$watch(function () { return $localStorageService.get("configPreview"); },function(){
+		wallPreview = ($localStorageService.get("configPreview"));
+		checkPreview();
+	});
+
+	function checkPreview(){
+		if(wallPreview)
+			allowRefresh();
+		else
+			disableRefresh();
+	}
+
+	checkPreview();
+
 	$scope.refreshBtnClick = $wall.new;
+
 	$scope.setBtnClick = $wall.set;
 	$scope.saveasBtnClick = function () {
 		$wall.saveas();

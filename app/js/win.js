@@ -8,7 +8,7 @@
  * Factory in the app
  */
  angular.module('app')
- .factory('win', ['NW', 'localStorageService', function(NW, $localStorageService) {
+ .factory('win', ['NW', 'PLATFORM', 'localStorageService', function(NW, _PLATFORM, $localStorageService) {
  	var obj = {
  		statusShow: false,
  		command: function (command, func) {
@@ -27,11 +27,29 @@
  			var shortcut = new gui.Shortcut(option);
  			gui.App.registerGlobalHotKey(shortcut);
  		},
+ 		create_messageInApp:function (text, type){
+ 			var $header = angular.element(document.querySelector("header"));
+
+ 			var $badge = angular.element(document.createElement("div"));
+ 			$badge.addClass('message');
+ 			$badge.addClass(type);
+
+ 			var $text = angular.element(document.createElement('div'));
+ 			$text.text(text);
+
+ 			$badge.append($text);
+
+ 			$header.append($badge);
+ 		},
  		create_notification: function (title, text, onclick, onclose, autoclose) {
- 			var notification = new Notification(title,{
- 				/*icon: "./img/logo.png",*/
- 				body: text
- 			});
+ 			var ndata = {
+ 				body:text
+ 			};
+
+ 			if(_PLATFORM != "mac")
+ 				ndata.icon = "./img/logo.png";
+
+ 			var notification = new Notification(title, ndata);
 
  			notification.onclick = function () {
  				notification.close();
@@ -56,22 +74,47 @@
 
  			return notification;
  		},
+ 		_preventNoPreviewed: function(){
+ 			var imgElement= angular.element(document.querySelector("#random-wallpaper-active img"));
+ 			if(imgElement.hasClass("preview")){
+ 				imgElement.triggerHandler("mouseout");
+ 			}
+ 		},
+ 		isFocused: false,
  		atLaunch: function (AppMenu) {
  			if($localStorageService.get("configHideOnStartup") == 1)
  				obj.hide();
  			else
  				obj.show();
 
+ 			NW.win.on('focus', function(){
+ 				obj.isFocused = true;
+ 			});
+
+ 			NW.win.on('blur', function() {
+ 				obj.isFocused = false;
+ 				obj._preventNoPreviewed();
+ 			});
+
  			NW.win.on('minimize', function() {
- 				obj.hide();
+ 				obj.hide(true);
  			});
 
  			NW.win.on('close', function() {
+ 				obj._preventNoPreviewed();
+
  				NW.gui.App.quit();
  			});
 
  			obj.traymenu(AppMenu);
  			obj._checkIfShowAtLaunch();
+ 		},
+ 		autoResize: function (){
+ 			var window_ = NW.gui.Window.get();
+ 			var app_ = document.querySelector("body");
+
+ 			window_.width = app_.clientWidth;
+ 			window_.height = app_.clientHeight;
  		},
  		toggleShow: function () {
  			if(obj.statusShow)
@@ -100,7 +143,7 @@
  			}
  		},
  		traymenu: function(AppMenu){
- 			var iconbar = (process.platform == "darwin") ? "./app/img/logo_barMacos.png" : "./app/img/logo_barWin.png";
+ 			var iconbar = (_PLATFORM == "mac") ? "./app/img/logo_barMacos.png" : "./app/img/logo_barWin.png";
 
  			var tray = new NW.gui.Tray({icon: iconbar });
  			tray.on("click", function(){
@@ -131,7 +174,7 @@
  		_checkIfShowAtLaunch : function(){
  			var stPath = process.execPath;
 
- 			if (process.platform == "darwin") {
+ 			if (_PLATFORM == "mac") {
  				stPath = stPath.split("/Contents/");
  				stPath = stPath[0];
  			}
@@ -149,7 +192,7 @@
  		launchAtStartup : function(isEnabled){
  			var stPath = process.execPath;
 
- 			if (process.platform == "darwin") {
+ 			if (_PLATFORM == "mac") {
  				stPath = stPath.split("/Contents/");
  				stPath = stPath[0];
  			}
