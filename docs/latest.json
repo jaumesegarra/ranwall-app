@@ -1,9 +1,9 @@
 {
-	"version": "0.7.0",
-	"changes": "##Changes in v. 0.7.0 \r\n - New provider desktoppr.co! \r\n - Wallpaper preview (beta)\r\n - Option to force the resolution of wallpapers \r\n - Wallpaper info on hover",
+	"version": "0.9.0",
+	"changes": "##Changes in v. 0.9.0 \r\n - New amz design! \r\n - Light theme option\r\n - Updated node-webkit version (0.30.1)",
 	"download_url": {
-		"win32": "https://github.com/jaumesegarra/ranwall-app/releases/download/0.7.0/ranwall-setup32.exe",
-		"win64": "https://github.com/jaumesegarra/ranwall-app/releases/download/0.7.0/ranwall-setup64.exe",
-		"mac": "https://github.com/jaumesegarra/ranwall-app/releases/download/0.7.0/ranwall.app.zip"
+		"win32": "https://github.com/jaumesegarra/ranwall-app/releases/download/0.9.0/ranwall-setup32.exe",
+		"win64": "https://github.com/jaumesegarra/ranwall-app/releases/download/0.9.0/ranwall-setup64.exe",
+		"mac": "https://github.com/jaumesegarra/ranwall-app/releases/download/0.9.0/ranwall.app.zip"
 	}
 }

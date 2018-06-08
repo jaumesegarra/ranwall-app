@@ -3,14 +3,60 @@
 	font-size: 17px;
 }
 
+@mixin background-dark{
+	background-color: rgba(0,0,0,0.95);
+}
+
+@mixin background-white{
+	background-color: rgba(255,255,255,0.95);
+	background-image: url('../img/blur.png');
+}
+
+body.-no-radius {
+	@include background-dark;
+
+	&.light{
+		@include background-white;
+	}
+
+	&.main:after{
+		display: none
+	}
+}
+
 body {
-	background-color: #30383c;
+	background: transparent;
 	font-family: Helvetica;
 	color: #fff;
-	padding: 20px 25px 10px 25px;
+	padding: 10px;
 	max-width: 800px;
 	margin: 0 auto;
 	overflow: hidden;
+
+	&.main:after{
+		content: ' ';
+		display: block;
+		width: 100vw;
+		height: 100vh;
+		@include background-dark;
+		position: fixed;
+		top: 0px;
+		left: 0px;
+		z-index: -10;
+		border-radius: 5px
+	}
+
+	&.light{
+		&.main:after{
+			@include background-white;
+		}
+
+		header{
+			& > a:not(.window-button){
+				color: #777
+			}
+		}
+	}
 }
 
 ::selection{
@@ -19,19 +65,72 @@ body {
 
 header{
 	position: relative;
+	display: flex;
+	align-items: center;
+	margin: 0 4px 5px;
+	height: 25px;
+
+	
+	& > a{
+		-webkit-app-region: no-drag;
+		z-index: 1;
+
+		&:not(.window-button){
+			cursor: pointer;
+			color: #c9ced4;
+
+			i{
+				font-weight: 100
+			}
+		}	
+	}
+	
+	a#refresh-random-wallpaper{
+		margin-left: auto;
+	}
+
+	a#config {
+		margin-left: 5px;
+	}
+
+	a.window-button{
+		margin-right: 7px;
+		width: 10px;
+		height: 10px;
+		border: 1px solid;
+		border-radius: 50%;
+
+		&:hover{
+			opacity: 0.8
+		}
+
+		&#close{
+			background-color: #f74141;
+			color: red;
+		}
+
+		&#minimize{
+			background-color: #ffd53b;
+			color: #dcb72f;
+		}
+	}
 
 	h1 {
-		margin: 0px 0px 20px 0px;
-		display: inline-block;
-		position: relative;
-		top: 13px;
-	}
+		margin: 0px;
+		position: absolute;
+		top: 2px;
+		left: 35px;
+		width: calc(100% - 70px);
+		padding-right: 35px;
+		display: flex;
+		justify-content: center;
+		-webkit-app-region: drag;
 
-	button {
-		float: right;
-		margin-left: 10px;
-		margin-top: 12px
+		img{
+			height: 20px
+		}
 	}
+	
 
 	div.message{
 
@@ -90,8 +189,9 @@ button, .button, input[type="button"] {
 		opacity: 0.9;
 
 		&.very{
-			background-color: #9ac3ef;
-			border-color: #7aa7d6 !important;
+			background-color: #f5f5f5;
+			border-color: #b3b3b3 !important;
+			color: #4e88c5;
 		}
 	}
 
@@ -118,7 +218,7 @@ button, .button, input[type="button"] {
 	}
 }
 
-$border_radius_wall: 10px;
+$border_radius_wall: 5px;
 
 #random-wallpaper-active{
 	width: 100%;
@@ -129,7 +229,7 @@ $border_radius_wall: 10px;
 	min-height: 120px;
 	background-color: #9c9898;
 	border-radius: $border_radius_wall;
-	margin-bottom: 15px;
+	//margin-bottom: 15px;
 	position: relative;
 	overflow: hidden;
 
@@ -297,7 +397,9 @@ body.config{
 
 	nav {
 		border-bottom: 1px dashed #a7a2a2;
-		padding-bottom: 20px;
+		padding-bottom: 15px;
+		padding-top: 5px;
+		padding-left: 5px;
 		margin-bottom: 10px;
 	}
 
@@ -361,6 +463,7 @@ body.updater{
 		height: auto;
 		min-height: 140px;
 		overflow: auto;
+		border-radius: 10px;
 
 		&::selection{
 			background:#d8edf1;
@@ -368,7 +471,7 @@ body.updater{
 	}
 
 	.foot {
-		margin-top: 10px;
+		margin: 10px 4px;
 
 		#download {
 			float: right;

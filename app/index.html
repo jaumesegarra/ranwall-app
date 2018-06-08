@@ -9,31 +9,41 @@
     <link rel="stylesheet" type="text/css" href="css/app.css">
 </head>
 
-<body ng-controller="mainController">
-
+<body class="main" ng-controller="mainController">
+    <script type="text/javascript">
+        if(process.platform == "win32") document.body.classList.add('-no-radius');
+        if(localStorage.getItem('ls.LightTheme') == "true") document.body.classList.add('light');
+    </script>
     <header>
-        <h1><img src="img/logoText.png" onmousedown="return false"/></h1>
-        <button class="grey" id="config" ng-click="openConfig()"><i class="la la-cog" aria-hidden="true"></i></button>
-        <button id="refresh-random-wallpaper" ng-click="refreshBtnClick()">refresh</button>
+        <a id="close" class="window-button" title="Close" ng-click="closeWindow()"></a>
+        <a id="minimize" class="window-button" title="Minimize" ng-click="minimizeWindow()"></a>
+
+        <h1>
+            <img src="img/logoText.png" title="ranwall: created by Jaume Segarra" onmousedown="return false"/>
+        </h1>
+
+        <a id="refresh-random-wallpaper" title="Refresh" ng-click="refreshBtnClick()"><i class="la la-refresh" aria-hidden="true"></i></a>
+        <a id="config" title="Configuration" ng-click="openConfig()"><i class="la la-cog" aria-hidden="true"></i></a>
     </header>
-
-    <div id="random-wallpaper-active" class="loading" ng-dblClick="setBtnClick()">
-        <img ng-mouseover="previewup()" ng-mouseout="previewdown()"/>
-        <div class="on-error">
-            <h2>Error trying load wallpaper</h2>
-            <p>Will be retry at 10 seconds automatically.</p>
-        </div>
-
-        <div class="foot-buttons">
-            <div class="info">
-                <span title="Provider">{{current_wallpaper.provider}}</span>
-                <span ng-show="!current_wallpaper.isDesiredResize" title="Original size">{{current_wallpaper.originalResize.width}}x{{current_wallpaper.originalResize.height}}</span>
+    
+    <div id="drag">
+        <div id="random-wallpaper-active" class="loading" ng-dblClick="setBtnClick()">
+            <img ng-mouseover="previewup()" ng-mouseout="previewdown()"/>
+            <div class="on-error">
+                <h2>Error trying load wallpaper</h2>
+                <p>Will be retry at 10 seconds automatically.</p>
             </div>
-            <button class="very light" id="saveas-wallpaper" ng-click="saveasBtnClick()"><i class="la la-download"></i></button>
-            <button class="light" id="set-wallpaper" ng-click="setBtnClick()">set</button>
+
+            <div class="foot-buttons">
+                <div class="info">
+                    <span title="Wallpaper provider">{{current_wallpaper.provider}}</span>
+                    <span ng-show="!current_wallpaper.isDesiredResize" title="Original wallpaper size">{{current_wallpaper.originalResize.width}}x{{current_wallpaper.originalResize.height}}</span>
+                </div>
+                <button class="very light" id="saveas-wallpaper" title="Save as wallpaper" ng-click="saveasBtnClick()"><i class="la la-download"></i></button>
+                <button class="light" id="set-wallpaper" title="Set wallpaper" ng-click="setBtnClick()">set</button>
+            </div>
         </div>
     </div>
-    
     <script src="js/web-pull-to-refresh/hammer.2.0.4.js"></script>
     <script src="js/web-pull-to-refresh/wptr.1.1.js"></script>
     <script src="js/_vendor/angular/angular.js"></script>

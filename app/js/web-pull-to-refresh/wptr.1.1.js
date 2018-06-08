@@ -7,7 +7,7 @@ var WebPullToRefresh = (function () {
 	 */	
 	 var defaults = {
 		// ID of the element holding pannable content area
-		contentEl: 'body', 
+		contentEl: '#drag', 
 
 		// ID of the element holding pull to refresh loading area
 		ptrEl: 'random-wallpaper-active', 

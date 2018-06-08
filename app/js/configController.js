@@ -6,6 +6,7 @@ angular.module('app')
 	
 	function initConfigVariables(){
 		$scope.forceResize = UserConfig.ForceResize();
+		$scope.darkTheme = !UserConfig.LightTheme();
 	}
 
 	initConfigVariables();
@@ -18,6 +19,10 @@ angular.module('app')
 	$scope.hideAtLaunch = ($localStorageService.get("configHideOnStartup") == undefined || $localStorageService.get("configHideOnStartup") == 0) ? false : true;
 	$scope.$watch('hideAtLaunch', function() {
 		$win.hideOnStartup($scope.hideAtLaunch);
+	}, true);
+
+	$scope.$watch('darkTheme', function() {
+		$localStorageService.set("LightTheme", !$scope.darkTheme);
 	}, true);
 
 	var resolution = ($localStorageService.get('user_resolution') == undefined) ? _USER_RESOLUTION : JSON.parse("["+$localStorageService.get('user_resolution')+"]");

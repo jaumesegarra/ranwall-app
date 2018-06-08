@@ -1,8 +1,20 @@
 'use strict';
 
 angular.module('app')
-.controller('mainController',['$scope', 'wall', 'localStorageService', 'NW', 'ConfigWindow', 'PLATFORM', 'win', 'updater', 'MAGIC_SHORTCUT', 'previewer', function($scope, $wall, $localStorageService, NW, _ConfigWindow, PLATFORM, $win, $updater, _MAGIC_SHORTCUT, $previewer) {
-	
+.controller('mainController',['$scope', 'wall', 'localStorageService', 'NW', 'ConfigWindow', 'PLATFORM', 'win', 'updater', 'MAGIC_SHORTCUT', 'previewer', 'UserConfig', function($scope, $wall, $localStorageService, NW, _ConfigWindow, PLATFORM, $win, $updater, _MAGIC_SHORTCUT, $previewer, _UserConfig) {
+
+	$scope.$watch(function () { return $localStorageService.get("LightTheme"); },function(){
+		var isLight = _UserConfig.LightTheme();
+
+		if(isLight)
+			document.body.classList.add('light');
+		else
+			document.body.classList.remove('light');
+	});
+
+	$scope.closeWindow = NW.win.close;
+	$scope.minimizeWindow = $win.hide;
+
 	$wall.prepareElement();
 
 	function setNewWallpaperAuto() {

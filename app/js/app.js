@@ -58,6 +58,9 @@ angular.module('app', ['angularRandomString', 'LocalStorageModule'])
 .value('UserConfig', {
 	'ForceResize': function(){
 		return (localStorage.getItem('ls.ForceResize') == undefined || localStorage.getItem('ls.ForceResize') == 'true');
+	},
+	'LightTheme': function(){
+		return (localStorage.getItem('ls.LightTheme') == "true")
 	}
 })
 .value('MAGIC_SHORTCUT', { 'modifiers': 'Command+Shift', 'key':'W'})
@@ -100,7 +103,6 @@ angular.module('app', ['angularRandomString', 'LocalStorageModule'])
 	}
 
 }]).run(['MAGIC_SHORTCUT', function(_MAGIC_SHORTCUT){
-
 	document.body.addEventListener('dragover', function(e){
 		e.preventDefault();
 		e.stopPropagation();
