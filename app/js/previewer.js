@@ -8,50 +8,75 @@
  * Factory in the app
  */
  angular.module('app')
- .factory('previewer', ['NW', 'wall', 'win', function(NW, $wall, $win) {
- 	var _imgElement = angular.element(document.querySelector("#random-wallpaper-active img")),
+ .factory('previewer', ['$q', 'NW', 'wall', 'win', function($q, NW, $wall, $win) {
+ 	var _currentThinking = false,
  	_wallpaperActive = null,
  	_errorShowed = false;
 
  	var obj = {
  		isActive: false,
- 		up: function(){
- 			if($win.isFocused && $wall.current_wallpaper.name != JSON.parse(localStorage.getItem("ls.wallpaper_name")) && !obj.isActive){
- 				NW.wallpaper.get().then(imagePath => {
- 					if(NW.fs.existsSync(imagePath)){
- 						obj.isActive = true;
- 						_imgElement.addClass('preview');
+ 		obtainWallpaperActive: function(){
+ 			return $q(function (resolve, reject){	
 
- 						_wallpaperActive = imagePath;
+ 				var not_same_wallpaper = function() {
+ 					return $wall.current_wallpaper.name != JSON.parse(localStorage.getItem("ls.wallpaper_name"));
+ 				} 
 
- 						console.log('aaaaa');
+ 				if($win.isFocused && not_same_wallpaper && !obj.isActive){
+ 					obj.isActive = true;
+
+ 					NW.wallpaper.get().then(imagePath => {
  						
- 						$wall.set(true);
- 					}else{
- 						console.error('404, Not Found current wallpaper!');
- 						
- 						if(!_errorShowed){
- 							$win.create_messageInApp('Not Found current wallpaper!', 'error');
- 							_errorShowed = true;
+ 						if(NW.fs.existsSync(imagePath)){
+ 							resolve(imagePath);
+ 						} else { 
+ 							var showErr = undefined;
+
+ 							if(!_errorShowed && not_same_wallpaper){
+ 								showErr = true;
+ 								_errorShowed = true;
+ 							}
+
+ 							reject(showErr);
  						}
- 					}
- 				});
- 			}
+ 					}, reject);
+ 				}else reject();
+ 			});
+ 		},
+ 		up: function(imagePath){
+ 			return $q(function (resolve, reject){
+
+ 				if(!_currentThinking){
+ 					_currentThinking = true;
+
+ 					obj.isActive = true;
+
+ 					_wallpaperActive = imagePath;
+
+ 					$wall.set(true).then(function() { _currentThinking = false; $wall.current_wallpaper.status = 0; resolve(); }, function() { _currentThinking = false; reject(); });
+ 				}else reject();
+ 			});
  		},
  		down: function(){
- 			obj.isActive = false;
- 			_imgElement.removeClass('preview');
+ 			return $q(function (resolve, reject){
 
- 			if($wall.current_wallpaper.name != JSON.parse(localStorage.getItem("ls.wallpaper_name")))
- 				obj.restore();
- 			
+ 					obj.isActive = false;
+
+ 					if($wall.current_wallpaper.name != JSON.parse(localStorage.getItem("ls.wallpaper_name")))
+ 						obj.restore().then(resolve, reject);
+ 					else resolve();
+ 			});
  		},
  		restore: function(){
- 			if(_wallpaperActive != ""){
- 				NW.wallpaper.set(_wallpaperActive).then(() => {
- 					_wallpaperActive = null;
- 				});
- 			}
+ 			return $q(function (resolve, reject){
+ 				if(_wallpaperActive && _wallpaperActive != "")
+ 					NW.wallpaper.set(_wallpaperActive).then(() => {
+ 						_wallpaperActive = null;
+ 						$wall.current_wallpaper.status = -1;
+ 						resolve();
+ 					}, reject);
+ 				else resolve();
+ 			});	
  		}
  	}
 

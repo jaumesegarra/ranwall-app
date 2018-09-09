@@ -50,6 +50,7 @@ angular.module('app')
 	}
 
 	$scope.wproviders = wproviders;
+	$scope.selectedProviders = JSON.parse(localStorage.getItem("ls.wall_providers")); 
 
 	$scope.providersChanged = function(){
 		for(var key in $scope.wproviders) {

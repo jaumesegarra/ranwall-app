@@ -79,11 +79,11 @@ module.exports = function (grunt) {
           cacheDir: './build/cache',
           macIcns: './app-icon.icns',
           winIco: './app-icon.ico',
-          version: '0.30.1',
+          version: '0.33.0',
           flavor: 'normal',
                 buildDir: './builds', // Where the build version your app is saved
               },
-            src: ['./package.json', './app/**/*', '!./app/scss/**/**'].concat(modules) // Your NW.js app
+            src: ['./package.json', './engine.js', './bin/*', './app/**/*', '!./app/scss/**/**'].concat(modules) // Your NW.js app
           }
         });
 

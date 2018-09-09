@@ -80,7 +80,7 @@
  				imgElement.triggerHandler("mouseout");
  			}
  		},
- 		isFocused: false,
+ 		isFocused: true,
  		atLaunch: function (AppMenu) {
  			if($localStorageService.get("configHideOnStartup") == 1)
  				obj.hide();
@@ -111,10 +111,14 @@
  		},
  		autoResize: function (){
  			var window_ = NW.gui.Window.get();
- 			var app_ = document.querySelector("body");
+ 			var height = document.querySelector("header").clientHeight + document.querySelector("#drag").clientHeight + 20;
 
- 			window_.width = app_.clientWidth;
- 			window_.height = app_.clientHeight;
+ 			if(_PLATFORM == "mac")
+ 				height += 10
+
+ 			window_.width = document.querySelector("body").clientWidth;
+ 			window_.height = height;
+ 			
  		},
  		toggleShow: function () {
  			if(obj.statusShow)

@@ -1,9 +1,9 @@
 {
-	"version": "0.9.0",
-	"changes": "##Changes in v. 0.9.0 \r\n - New amz design! \r\n - Light theme option\r\n - Updated node-webkit version (0.30.1)",
+	"version": "1.0.0",
+	"changes": "##Changes in v. 1.0.0 \r\n - Improved design (especially in Windows) \r\n - New preview system: more efficient and allocated in 'set' button \r\n - Now ranwall use a custom wallpaper manager engine \r\n - Internal improvements \r\n - Updated node-webkit version (0.33.0)",
 	"download_url": {
-		"win32": "https://github.com/jaumesegarra/ranwall-app/releases/download/0.9.0/ranwall-setup32.exe",
-		"win64": "https://github.com/jaumesegarra/ranwall-app/releases/download/0.9.0/ranwall-setup64.exe",
-		"mac": "https://github.com/jaumesegarra/ranwall-app/releases/download/0.9.0/ranwall.app.zip"
+		"win32": "https://github.com/jaumesegarra/ranwall-app/releases/download/1.0.0/ranwall-setup32.exe",
+		"win64": "https://github.com/jaumesegarra/ranwall-app/releases/download/1.0.0/ranwall-setup64.exe",
+		"mac": "https://github.com/jaumesegarra/ranwall-app/releases/download/1.0.0/ranwall.app.zip"
 	}
 }

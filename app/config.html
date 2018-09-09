@@ -6,6 +6,9 @@
 	<link href="css/app.css" rel="stylesheet"/>
 </head>
 <body class="config" ng-controller="configController">
+	<script type="text/javascript">
+        if(process.platform == "win32") document.body.classList.add('windows');
+    </script>
 	<nav>
 		<a href="#app" class="button grey light">App</a>
 		<a href="#wallpaper" class="button grey light">Wallpaper</a>

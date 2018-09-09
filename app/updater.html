@@ -6,6 +6,9 @@
 	<link href="css/app.css" rel="stylesheet"/>
 </head>
 <body class="updater" ng-controller="updateController">
+	<script type="text/javascript">
+        if(process.platform == "win32") document.body.classList.add('windows');
+    </script>
 	<h2>New v. {{version}}</h2>
 	<textarea readonly="readonly">{{changes}}</textarea>
 	<div class="foot">

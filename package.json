@@ -1,6 +1,6 @@
 {
     "name": "RanWall",
-    "version": "0.9.0",
+    "version": "1.0.0",
     "main": "./app/index.html",
     "description": "App for set random wallpapers",
     "repository": "https://github.com/jaumesegarra/ranwall-app",
@@ -15,8 +15,7 @@
         "mkdirp": "^0.5.1",
         "nw-dialog": "^1.0.7",
         "pify": "^3.0.0",
-        "ranwallpaperup": "^0.5.3",
-        "wallpaper": "^3.0.0"
+        "ranwallpaperup": "^0.5.3"
     },
     "devDependencies": {
         "grunt": "^1.0.1",
@@ -26,10 +25,10 @@
         "grunt-nw-builder": "^3.1.0",
         "grunt-shell": "^1.1.2",
         "load-grunt-tasks": "^3.5.2",
-        "nw": "^0.30.1"
+        "nw": "^0.33.0"
     },
     "window": {
-        "title": "RanWall",
+        "title": "ranwall",
         "toolbar": false,
         "frame": false,
         "position": "center",

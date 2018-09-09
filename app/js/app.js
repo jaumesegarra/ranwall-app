@@ -1,6 +1,9 @@
 'use strict';
 
-angular.module('app', ['angularRandomString', 'LocalStorageModule'])
+angular.module('app', ['angularRandomString', 'LocalStorageModule'], function($compileProvider){
+	$compileProvider.imgSrcSanitizationWhitelist(/^\s*(https?|ftp|file|chrome-extension):|data:image\//);
+	$compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|ftp|mailto|file|chrome-extension):/);
+})
 .constant('USER_RESOLUTION', [window.screen.width, window.screen.height])
 .constant('WALLPAPER_PROVIDERS', [
 {
@@ -67,7 +70,7 @@ angular.module('app', ['angularRandomString', 'LocalStorageModule'])
 .constant('NW', (function(){
 	var requires = {
 		gui: require('nw.gui'),
-		wallpaper: require('wallpaper'),
+		wallpaper: require('../engine.js'),
 		fs: require('fs'),
 		mkdirp: require('mkdirp'),
 		http: require('follow-redirects').http,

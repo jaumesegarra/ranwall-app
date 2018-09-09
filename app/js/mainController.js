@@ -1,109 +1,19 @@
 'use strict';
 
 angular.module('app')
-.controller('mainController',['$scope', 'wall', 'localStorageService', 'NW', 'ConfigWindow', 'PLATFORM', 'win', 'updater', 'MAGIC_SHORTCUT', 'previewer', 'UserConfig', function($scope, $wall, $localStorageService, NW, _ConfigWindow, PLATFORM, $win, $updater, _MAGIC_SHORTCUT, $previewer, _UserConfig) {
+.controller('mainController',['$scope', 'wall', 'localStorageService', 'NW', 'ConfigWindow', 'win', 'previewer', 'UserConfig', 'globalruns', function($scope, $wall, $localStorageService, NW, _ConfigWindow, $win, $previewer, _UserConfig, $globalRuns) {
+	
+	// Variables
+	var wallPreview = ($localStorageService.get("configPreview"));
+	$scope.current_wallpaper = undefined;
+	$scope.isDownloading = false;
+	$scope.hasError = false;
 
-	$scope.$watch(function () { return $localStorageService.get("LightTheme"); },function(){
-		var isLight = _UserConfig.LightTheme();
-
-		if(isLight)
-			document.body.classList.add('light');
-		else
-			document.body.classList.remove('light');
-	});
-
-	$scope.closeWindow = NW.win.close;
-	$scope.minimizeWindow = $win.hide;
-
-	$wall.prepareElement();
-
-	function setNewWallpaperAuto() {
-		$wall.new(true, true);
-	}
-
-	function openConfig() {
-		if(_ConfigWindow == null){
-
-			NW.gui.Window.open('app/config.html', {
-				position: 'center',
-				width: 485,
-				height: 310,
-				resizable:false
-			},
-			function(win){    
-				_ConfigWindow = win;
-
-				win.on('closed', function() {
-					_ConfigWindow = null;
-
-					if (PLATFORM == "mac") {
-						var menu = new NW.gui.Menu({type: "menubar"});
-						menu.createMacBuiltin && menu.createMacBuiltin("ranwall");
-						NW.gui.Window.get().menu = menu;
-					}
-				});
-			});
-
-		}else _ConfigWindow.focus();
-	}
-
-	var menu = [
-	{
-		"name": "Set new wallpaper!",
-		"key": _MAGIC_SHORTCUT.key, 
-		"modifiers": _MAGIC_SHORTCUT.modifiers,
-		"click": function(){
-			setNewWallpaperAuto();
-		}
-	},
-	{
-		"separator": 1
-	},
-	{
-		"name":"Show/Hide",
-		"click": function(){
-			$win.toggleShow();
-		}
-	},
-	{
-		"name":"Configuration",
-		"click": function(){
-			openConfig();
-		}
-	},
-	{
-		"name": "Check for updates",
-		"click": function(){
-			$updater.checkUpdate(true,true);
-		}
-	},
-	{
-		"name": "Exit",
-		"click": function () {
-			NW.gui.App.quit();
-		}
-	}
-	];
-
-	$win.atLaunch(menu);
-	$win.command(_MAGIC_SHORTCUT.modifiers+"+"+_MAGIC_SHORTCUT.key, setNewWallpaperAuto);
-	$updater.checkUpdate();
-
-	$wall.new();
-
-	var wallPreview = null;
-
-	$scope.current_wallpaper = $wall.current_wallpaper;
-
-	function allowRefresh(){
-		$scope.previewup = $previewer.up;
-		$scope.previewdown = $previewer.down;
-	}
-
-	function disableRefresh(){
-		$scope.previewup = null;
-		$scope.previewdown = null;
-	}
+	// Initial Runs
+	$globalRuns.initials(function(){ newWallpaper(true, true); });
+	prepareElement();
+	newWallpaper();
+	checkPreview();
 
 	WebPullToRefresh.init({
 		startFunction: function (){
@@ -113,9 +23,13 @@ angular.module('app')
 		},
 		loadingFunction: function (){
 			return new Promise( function( resolve, reject ) { 
-				resolve();
-				$wall.new();
-				checkPreview();
+				function loadNew(){
+					resolve();
+					newWallpaper();
+					checkPreview();
+				}
+				
+				$previewer.down().then(loadNew, loadNew);	
 			})
 		}
 	});
@@ -125,6 +39,112 @@ angular.module('app')
 		checkPreview();
 	});
 
+	// Actions
+	$scope.closeWindow = NW.win.close;
+	$scope.minimizeWindow = $win.hide;
+	$scope.refreshBtnClick = newWallpaper;
+
+	$scope.setBtnClick = setWallpaper;
+	$scope.saveasBtnClick = $wall.saveas;
+	$scope.openConfig = $globalRuns.openConfig;
+
+	// Functions
+	function prepareElement(){
+
+		var ranImg = document.querySelector("#random-wallpaper-active > img");
+		ranImg.addEventListener("error", _errorImgLoading, false);
+		ranImg.addEventListener("load", function(){
+			setTimeout(function(){
+				$win.autoResize();
+			}, 100);
+		});
+
+		ranImg.ondragstart = function() { return false; };
+	}
+
+	function _errorImgLoading(){
+
+		angular.element(document.querySelector("#random-wallpaper-active img")).removeAttr("src");
+
+		$scope.isDownloading = false;
+		$scope.hasError = true;
+
+		setTimeout(function(){
+			$wall.new();
+		},10000);
+	}
+
+	function newWallpaper(autoset, notification){
+
+		if(!$scope.isDownloading){
+			$scope.isDownloading = true;
+
+			$wall.new(autoset, notification).then(function() {
+
+				$scope.hasError = false;
+				$scope.isDownloading = false;
+
+				$scope.current_wallpaper = $wall.current_wallpaper;
+
+			}, function(){
+				console.log('ERRORRRR');
+			});
+		}
+	}
+
+	function setWallpaper(){
+		$wall.set().then(function() {
+			$scope.current_wallpaper = $wall.current_wallpaper;
+
+			clearTimeout(timeoutPreviewUp);
+		});
+	}
+
+	var timeoutPreviewUp;
+
+	var setBtnIsFocused = false;
+
+	var previewup = function(){
+		setBtnIsFocused = true;
+		
+		$previewer.obtainWallpaperActive().then(function(wallname){
+
+			timeoutPreviewUp = setTimeout(function(){
+				$previewer.up(wallname).then(function() {
+
+					if(!setBtnIsFocused)
+						previewdown();
+				}, function(){});
+			}, 620);
+		}, function (err){
+			if(err){
+				$win.create_messageInApp('Not Found current wallpaper!', 'error');
+			}
+		});
+	}
+
+	var previewdown = function(){
+		setBtnIsFocused = false;
+
+		clearTimeout(timeoutPreviewUp);
+
+		$previewer.down().then(function() {
+
+			if(setBtnIsFocused)
+				previewup();
+		}, function(){});
+	}
+
+	function allowRefresh(){
+		$scope.previewup = previewup;
+		$scope.previewdown = previewdown;
+	}
+
+	function disableRefresh(){
+		$scope.previewup = null;
+		$scope.previewdown = null;
+	}
+
 	function checkPreview(){
 		if(wallPreview)
 			allowRefresh();
@@ -132,14 +152,4 @@ angular.module('app')
 			disableRefresh();
 	}
 
-	checkPreview();
-
-	$scope.refreshBtnClick = $wall.new;
-
-	$scope.setBtnClick = $wall.set;
-	$scope.saveasBtnClick = function () {
-		$wall.saveas();
-	}
-
-	$scope.openConfig = openConfig;
 }])
