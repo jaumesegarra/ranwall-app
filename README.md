@@ -15,9 +15,8 @@ You can also change the wallpaper with a single command: (`Cmd+Shift+W` on MacOS
 ## Download
 Download latest version from [here](https://github.com/jaumesegarra/ranwall-app/releases) (Only for Windows and macos at the moment)
 
-## Coming?
-- [ ] Change wallpaper automatically every x minutes
-
 ## Thanks to:
 * [picsum.photos](https://picsum.photos)
 * [unsplash.com](https://unsplash.com)
+* [wallpaperup.com](https://www.wallpaperup.com)
+* [desktoppr.co](https://www.desktoppr.co)
