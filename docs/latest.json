@@ -1,9 +1,9 @@
 {
-	"version": "1.0.0",
-	"changes": "##Changes in v. 1.0.0 \r\n - Improved design (especially in Windows) \r\n - New preview system: more efficient and allocated in 'set' button \r\n - Now ranwall use a custom wallpaper manager engine \r\n - Internal improvements \r\n - Updated node-webkit version (0.33.0)",
+	"version": "2.0.0",
+	"changes": "##Changes in v. 2.0.0 \r\n - New auto updates system \r\n - Improved design. \r\n - Updated list of wallpaper providers. \r\n - Custom providers: now you can write your own list of providers. (Warning) Note: See the README. \r\n - Electron/React instead of NW.js/AngularJS \r\n - Other improvements...",
 	"download_url": {
-		"win32": "https://github.com/jaumesegarra/ranwall-app/releases/download/1.0.0/ranwall-setup32.exe",
-		"win64": "https://github.com/jaumesegarra/ranwall-app/releases/download/1.0.0/ranwall-setup64.exe",
-		"mac": "https://github.com/jaumesegarra/ranwall-app/releases/download/1.0.0/ranwall.app.zip"
+		"win32": "https://github.com/jaumesegarra/ranwall2-app/releases/download/v2.0.0/ranwall-setup-2.0.0.exe",
+		"win64": "https://github.com/jaumesegarra/ranwall2-app/releases/download/v2.0.0/ranwall-setup-2.0.0.exe",
+		"mac": "https://github.com/jaumesegarra/ranwall2-app/releases/download/v2.0.0/ranwall-2.0.0.dmg"
 	}
 }

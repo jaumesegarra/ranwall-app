@@ -1,5 +1,9 @@
 ranwall
 ====================================
+
+> Deprecated version       
+> Please see [v.2](https://github.com/jaumesegarra/ranwall2-app)
+
 Are you tired of your bored wallpaper :expressionless:? <br /> <br />
 With ranwall you can discover more than millions wallpapers just doing a click :open_mouth:, if you liked any you can set it to your desktop with an other click. **EASY** :sunrise_over_mountains:! 
 
